@@ -1,8 +1,9 @@
 ﻿namespace Domain
 {
-    class Enemy
+    class Enemy : Character
     {
         public uint Id { get; set; }
+        public Emoji Emoji { get; set; }
 
     }
 }
