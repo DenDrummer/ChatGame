@@ -3,10 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public enum Emoji
+    public class Emoji
     {
-        CopyThis = 1,
-        Kappa,
-        PastaThat
+        public ushort Id { get; set; }
+        [Required]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessageResourceName = "InvalidEmoji", ErrorMessageResourceType = typeof(Resources))]
+        public string EmojiTekst { get; set; }
+        public uint Rarity { get; set; }
+        public ushort Uses { get; set; }
+        public uint TotalUses { get; set; }
     }
 }
