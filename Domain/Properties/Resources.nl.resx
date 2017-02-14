@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InvalidEmoji" xml:space="preserve">
-    <value>This is not a valid emoji!</value>
+    <value>Dit is geen geldige emoji!</value>
   </data>
   <data name="InvalidUserName" xml:space="preserve">
-    <value>This is not a valid username!</value>
+    <value>Dit is geen geldige gebruikersnaam!</value>
   </data>
 </root>

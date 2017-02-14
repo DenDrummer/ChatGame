@@ -61,6 +61,15 @@ namespace Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a valid emoji!.
+        /// </summary>
+        internal static string InvalidEmoji {
+            get {
+                return ResourceManager.GetString("InvalidEmoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is not a valid username!.
         /// </summary>
         internal static string InvalidUserName {
