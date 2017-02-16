@@ -1,7 +1,7 @@
-﻿using Domain;
+﻿using ChatGame.BL.Domain;
 using System.Collections.Generic;
 
-namespace DAL
+namespace ChatGame.DAL
 {
     public interface IGameRepository
     {
@@ -13,14 +13,16 @@ namespace DAL
         #endregion
 
         #region Delete methods
-        void DeleteEmoji(int id);
+        void DeleteEmoji(ushort id);
+        void DeleteEnemy(uint id);
         #endregion
 
         #region Read multiple methods
-        IEnumerable<Emoji> ReadEmojis();
-        IEnumerable<Viewer> ReadViewers(Streamer streamer);
-        IEnumerable<Streamer> ReadStreamers();
         IEnumerable<Character> ReadCharacters();
+        IEnumerable<Emoji> ReadEmojis();
+        IEnumerable<Enemy> ReadEnemies();
+        IEnumerable<Streamer> ReadStreamers();
+        IEnumerable<Viewer> ReadViewers(Streamer streamer);
         #endregion
 
         #region Read single methods
@@ -30,10 +32,10 @@ namespace DAL
         #endregion
 
         #region Update methods
-        void UpdateViewer(Viewer viewer);
         void UpdateEmoji(Emoji emoji);
-        void UpdateStreamer(Streamer streamer);
         void UpdateEnemy(Enemy enemy);
+        void UpdateStreamer(Streamer streamer);
+        void UpdateViewer(Viewer viewer);
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace ChatGame.BL.Domain
 {
     public class Streamer : Character
     {

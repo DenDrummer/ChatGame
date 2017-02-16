@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain
+namespace ChatGame.BL.Domain
 {
     public class Viewer
     {

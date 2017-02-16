@@ -1,6 +1,6 @@
-﻿namespace Domain
+﻿namespace ChatGame.BL.Domain
 {
-    public class Character
+    public abstract class Character
     {
         #region Location
         public int XLocation { get; set; }
