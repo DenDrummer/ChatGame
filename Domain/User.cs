@@ -7,7 +7,7 @@ namespace ChatGame.BL.Domain
     {
         public ushort Id { get; set; }
         [Required]
-        [RegularExpression("^[a-z_0-9]{4,20}$", ErrorMessageResourceName = "InvalidUserName", ErrorMessageResourceType = typeof(Resources))]
+        [RegularExpression("^[a-z_0-9]{4,25}$", ErrorMessageResourceName = "InvalidUserName", ErrorMessageResourceType = typeof(Resources))]
         public string UserName { get; set; }
     }
 }

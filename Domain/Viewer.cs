@@ -7,7 +7,8 @@ namespace ChatGame.BL.Domain
         public ushort Id { get; set; }
         public User User { get; set; }
         public Streamer Streamer { get; set; }
-        public ushort ChatLevel { get; set; }
+        //goes up as they chat more
+        public double ChatLevel { get; set; }
         public DateTime LastMessage { get; set; }
     }
 }

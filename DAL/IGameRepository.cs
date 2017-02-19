@@ -7,14 +7,15 @@ namespace ChatGame.DAL
     {
         #region Create methods
         Emoji CreateEmoji(Emoji emoji);
+        Enemy CreateEnemy(Enemy enemy);
         Streamer CreateStreamer(Streamer streamer);
         User CreateUser(User user);
         Viewer CreateViewer(Viewer viewer);
         #endregion
 
         #region Delete methods
-        void DeleteEmoji(ushort id);
-        void DeleteEnemy(uint id);
+        void DeleteEmoji(int id);
+        void DeleteEnemy(int id);
         #endregion
 
         #region Read multiple methods
@@ -26,6 +27,8 @@ namespace ChatGame.DAL
         #endregion
 
         #region Read single methods
+        Emoji ReadEmoji(int emojiId);
+        Enemy ReadEnemy(int enemyId);
         Streamer ReadStreamer(int streamerId);
         Streamer ReadStreamerFromViewer(int viewerId);
         Viewer ReadViewer(int viewerId);
