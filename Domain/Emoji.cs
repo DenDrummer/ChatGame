@@ -1,5 +1,6 @@
 ﻿using ChatGame.BL.Domain.Properties;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 
 namespace ChatGame.BL.Domain
 {
@@ -16,5 +17,6 @@ namespace ChatGame.BL.Domain
         //should be reset as soon as it reaches the rarity
         public ushort Uses { get; set; }
         public uint TotalUses { get; set; }
+        public Image Image { get; set; }
     }
 }

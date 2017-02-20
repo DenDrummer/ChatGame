@@ -59,7 +59,7 @@ namespace ChatGame.BL
         #endregion
 
         #region Remove methods
-        #region
+        #endregion
 
         #region Validate methods
         private void ValidateEmoji(Emoji emoji)
