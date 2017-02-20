@@ -41,6 +41,7 @@ namespace ChatGame.BL
         Emoji GetEmoji(string emojiTekst);
         Enemy GetEnemy(int enemyId);
         Streamer GetStreamer(int streamerId);
+        Streamer GetStreamer(string userName);
         User GetUser(int userId);
         Viewer GetViewer(int viewerId);
         #endregion

@@ -120,4 +120,7 @@
   <data name="InvalidEmoji" xml:space="preserve">
     <value>This is not a valid emoji!</value>
   </data>
+  <data name="InvalidEnemy" xml:space="preserve">
+    <value>This is not a valid enemy!</value>
+  </data>
 </root>

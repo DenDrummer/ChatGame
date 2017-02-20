@@ -35,17 +35,13 @@ namespace ChatGame.BL
         #endregion
 
         #region Add from details methods
-        public Emoji AddEmoji(string emojiTekst, int rarity)
+        public Emoji AddEmoji(string emojiTekst, int rarity) => new Emoji()
         {
-            Emoji em = new Emoji()
-            {
-                EmojiTekst = emojiTekst,
-                Rarity = (ushort)rarity,
-                Uses = 0,
-                TotalUses = 0
-            };
-            return em;
-        }
+            EmojiTekst = emojiTekst,
+            Rarity = (ushort)rarity,
+            Uses = 0,
+            TotalUses = 0
+        };
         #endregion
         #endregion
 
@@ -64,24 +60,38 @@ namespace ChatGame.BL
         #region Validate methods
         private void ValidateEmoji(Emoji emoji)
         {
-            //Validator.ValidateObject(ticket, new ValidationContext(ticket), validateAllProperties: true);
-
             List<ValidationResult> errors = new List<ValidationResult>();
             bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
 
             if (!valid)
                 throw new ValidationException(Resources.InvalidEmoji);
         }
-        #endregion
 
         private void ValidateEnemy(Enemy enemy)
         {
-            throw new NotImplementedException();
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.InvalidEnemy);
         }
+        #endregion
 
         public Enemy AddEnemy(string emojiTekst, string streamerName)
         {
-            throw new NotImplementedException();
+            Emoji em = GetEmoji(emojiTekst);
+            Streamer s = GetStreamer(streamerName);
+            double statBase = s.Id * em.Id / 10;
+            Enemy en = new Enemy()
+            {
+                Emoji = em,
+                Streamer = s,
+                AttackSpeed = statBase,
+                Armor = statBase * 1.1,
+                Defense = statBase * 1.2,
+                Health = statBase * 100
+            };
+            return en;
         }
 
         public Streamer AddStreamer(Streamer streamer)
@@ -205,6 +215,11 @@ namespace ChatGame.BL
         }
 
         public void RemoveViewer(int viewerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Streamer GetStreamer(string userName)
         {
             throw new NotImplementedException();
         }

@@ -68,5 +68,14 @@ namespace ChatGame.BL.Properties {
                 return ResourceManager.GetString("InvalidEmoji", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid enemy!.
+        /// </summary>
+        internal static string InvalidEnemy {
+            get {
+                return ResourceManager.GetString("InvalidEnemy", resourceCulture);
+            }
+        }
     }
 }
