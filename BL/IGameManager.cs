@@ -11,9 +11,13 @@ namespace ChatGame.BL
     {
         #region Add methods
         Emoji AddEmoji(string emojiTekst, int rarity);
+        Emoji AddEmoji(Emoji emoji);
         Enemy AddEnemy(string emojiTekst, string streamerName);
+        Enemy AddEnemy(Enemy enemy);
         Streamer AddStreamer(string streamerName);
+        Streamer AddStreamer(Streamer streamer);
         Viewer AddViewer(string userName, string streamerName);
+        Viewer AddViewer(Viewer viewer);
         #endregion
 
         #region Change methods

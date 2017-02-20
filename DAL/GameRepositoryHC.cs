@@ -4,7 +4,7 @@ using System;
 
 namespace ChatGame.DAL
 {
-    class GameRepositoryHC : IGameRepository
+    public class GameRepositoryHC : IGameRepository
     {
         #region Lists
         private List<Emoji> emojis;
