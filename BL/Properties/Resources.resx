@@ -123,4 +123,10 @@
   <data name="InvalidEnemy" xml:space="preserve">
     <value>This is not a valid enemy!</value>
   </data>
+  <data name="InvalidStreamer" xml:space="preserve">
+    <value>This is not a valid streamer!</value>
+  </data>
+  <data name="StreamerExists" xml:space="preserve">
+    <value>This user has already been registered as a streamer!</value>
+  </data>
 </root>

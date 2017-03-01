@@ -65,7 +65,7 @@ namespace ChatGame.DAL.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap img_Kappa {
             get {
-                object obj = ResourceManager.GetObject("img-Kappa", resourceCulture);
+                object obj = ResourceManager.GetObject("img_Kappa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace ChatGame.DAL.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap img_PJSalt {
             get {
-                object obj = ResourceManager.GetObject("img-PJSalt", resourceCulture);
+                object obj = ResourceManager.GetObject("img_PJSalt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

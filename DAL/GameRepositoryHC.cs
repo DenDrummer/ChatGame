@@ -277,6 +277,11 @@ namespace ChatGame.DAL
 
         public IEnumerable<Streamer> ReadStreamers() => streamers;
 
+        public IEnumerable<User> ReadUsers()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Viewer> ReadViewers(Streamer streamer) => viewers;
         #endregion
 
@@ -291,6 +296,8 @@ namespace ChatGame.DAL
         {
             return streamers.Find(s => s.Id == ReadViewer(viewerId).Streamer.Id);
         }
+
+        public User ReadUser(int userId) => users.Find(u => u.Id == userId);
 
         public Viewer ReadViewer(int viewerId) => viewers.Find(v => v.Id == viewerId);
         #endregion

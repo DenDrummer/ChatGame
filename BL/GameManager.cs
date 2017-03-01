@@ -96,12 +96,37 @@ namespace ChatGame.BL
 
         public Streamer AddStreamer(Streamer streamer)
         {
-            throw new NotImplementedException();
+            ValidateStreamer(streamer);
+            return repo.CreateStreamer(streamer);
+        }
+
+        private void ValidateStreamer(Streamer streamer)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.InvalidStreamer);
         }
 
         public Streamer AddStreamer(string streamerName)
         {
-            throw new NotImplementedException();
+            Streamer streamer = repo.ReadStreamers().ToList().Find(s => s.User.UserName.Equals(streamerName));
+            if (streamer != null)
+            {
+                throw new Exception(Resources.StreamerExists);
+            }
+            else
+            {
+                if (repo.ReadUsers().ToList().Find(u => u.UserName.Equals(streamerName)) != null)
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+            }
         }
 
         public Viewer AddViewer(Viewer viewer)

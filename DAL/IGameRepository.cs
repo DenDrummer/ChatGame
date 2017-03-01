@@ -23,6 +23,7 @@ namespace ChatGame.DAL
         IEnumerable<Emoji> ReadEmojis();
         IEnumerable<Enemy> ReadEnemies();
         IEnumerable<Streamer> ReadStreamers();
+        IEnumerable<User> ReadUsers();
         IEnumerable<Viewer> ReadViewers(Streamer streamer);
         #endregion
 
@@ -31,6 +32,7 @@ namespace ChatGame.DAL
         Enemy ReadEnemy(int enemyId);
         Streamer ReadStreamer(int streamerId);
         Streamer ReadStreamerFromViewer(int viewerId);
+        User ReadUser(int userId);
         Viewer ReadViewer(int viewerId);
         #endregion
 
