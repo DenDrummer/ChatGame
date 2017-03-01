@@ -61,6 +61,15 @@ namespace ChatGame.UI_CA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choice.
+        /// </summary>
+        internal static string Choice {
+            get {
+                return ResourceManager.GetString("Choice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This console interface is temporary to be able to test the application and will allow some things the final product won&apos;t allow..
         /// </summary>
         internal static string Disclaimer {
@@ -88,6 +97,15 @@ namespace ChatGame.UI_CA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a valid choice!.
+        /// </summary>
+        internal static string InvalidChoice {
+            get {
+                return ResourceManager.GetString("InvalidChoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;m sorry, but this feature has not been implemented yet. :(.
         /// </summary>
         internal static string NotImplementedYet {
@@ -102,6 +120,15 @@ namespace ChatGame.UI_CA.Resources {
         internal static string PressAnyKeyToExit {
             get {
                 return ResourceManager.GetString("PressAnyKeyToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to quit.
+        /// </summary>
+        internal static string Quit {
+            get {
+                return ResourceManager.GetString("Quit", resourceCulture);
             }
         }
         
@@ -124,7 +151,7 @@ namespace ChatGame.UI_CA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.14.
+        ///   Looks up a localized string similar to 0.0.15.
         /// </summary>
         internal static string VersionId {
             get {

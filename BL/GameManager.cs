@@ -34,7 +34,7 @@ namespace ChatGame.BL
         #region Add from details methods
         public Emoji AddEmoji(string emojiTekst, int rarity) => new Emoji()
         {
-            EmojiTekst = emojiTekst,
+            EmojiText = emojiTekst,
             Rarity = (ushort)rarity,
             Uses = 0,
             TotalUses = 0

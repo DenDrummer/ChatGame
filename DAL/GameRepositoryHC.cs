@@ -1,6 +1,7 @@
 ﻿using ChatGame.BL.Domain;
 using System.Collections.Generic;
 using System;
+using System.Drawing;
 
 namespace ChatGame.DAL
 {
@@ -30,32 +31,18 @@ namespace ChatGame.DAL
             #endregion
 
             #region Create emojis
-            #region em1
-            Emoji em1 = new Emoji()
-            {
-                Id = (ushort)(emojis.Count + 1),
-                EmojiTekst = "Kappa",
-                Rarity = 1,
-                TotalUses = 0,
-                Uses = 0,
-                Image = Resources.Resources.img_Kappa
-            };
-            emojis.Add(em1);
+            #region imGlitch
+            Emoji imGlitch = NewEmoji("imGlitch", Resources.Resources.img_imGlitch);
+            emojis.Add(imGlitch);
             #endregion
-
-            #region em2
-            Emoji em2 = new Emoji()
-            {
-                Id = (ushort)(emojis.Count + 1),
-                EmojiTekst = "PJSalt",
-                Rarity = 1,
-                TotalUses = 0,
-                Uses = 0,
-                Image = Resources.Resources.img_PJSalt
-            };
-            emojis.Add(em2);
+            #region Kappa
+            Emoji Kappa = NewEmoji("Kappa", Resources.Resources.img_Kappa);
+            emojis.Add(Kappa);
             #endregion
-
+            #region PJSalt
+            Emoji PJSalt = NewEmoji("PJSalt", Resources.Resources.img_PJSalt);
+            emojis.Add(PJSalt);
+            #endregion
             #endregion
 
             #region Create users
@@ -89,60 +76,11 @@ namespace ChatGame.DAL
 
             #region Create streamers
             #region Den_drummer
-            Streamer s_den_drummer = new Streamer()
-            {
-                Id = (ushort)(streamers.Count + 1),
-                User = u_den_drummer,
-
-                #region location
-                XLocation = 0,
-                YLocation = 0,
-                #endregion
-
-                #region stats
-                Armor = 20,
-                AttackSpeed = 2.5,
-                Defense = 10,
-                Health = 100,
-                Level = 0,
-                MaxHealth = 100,
-                Speed = 3.4,
-                Strength = 21,
-                #endregion
-
-                #region other
-                Money = 0
-                #endregion
-            };
+            Streamer s_den_drummer = NewStreamer(u_den_drummer);
             streamers.Add(s_den_drummer);
             #endregion
-
             #region DoomCE
-            Streamer s_doomce = new Streamer()
-            {
-                Id = (ushort)(streamers.Count + 1),
-                User = u_doomce,
-
-                #region location
-                XLocation = 0,
-                YLocation = 0,
-                #endregion
-
-                #region stats
-                Armor = 20,
-                AttackSpeed = 2.5,
-                Defense = 10,
-                Health = 100,
-                Level = 0,
-                MaxHealth = 100,
-                Speed = 3.4,
-                Strength = 21,
-                #endregion
-
-                #region other
-                Money = 0
-                #endregion
-            };
+            Streamer s_doomce = NewStreamer(u_doomce);
             streamers.Add(s_doomce);
             #endregion
             #endregion
@@ -150,52 +88,22 @@ namespace ChatGame.DAL
             #region Create viewers
             #region Den_drummer's viewers
             #region DoomCE
-            Viewer v_dd_d = new Viewer()
-            {
-                Id = (ushort)(viewers.Count + 1),
-                ChatLevel = 0,
-                LastMessage = DateTime.Now.ToUniversalTime(),
-                Streamer = s_den_drummer,
-                User = u_doomce
-            };
+            Viewer v_dd_d = NewViewer(s_den_drummer,u_doomce);
             viewers.Add(v_dd_d);
             #endregion
-
             #region Jakeo232
-            Viewer v_dd_j = new Viewer()
-            {
-                Id = (ushort)(viewers.Count + 1),
-                ChatLevel = 0,
-                LastMessage = DateTime.Now.ToUniversalTime(),
-                Streamer = s_den_drummer,
-                User = u_jakeo232
-            };
+            Viewer v_dd_j = NewViewer(s_den_drummer, u_jakeo232);
             viewers.Add(v_dd_j);
             #endregion
             #endregion
 
             #region DoomCE's viewers
             #region Den_drummer
-            Viewer v_d_dd = new Viewer()
-            {
-                Id = (ushort)(viewers.Count + 1),
-                ChatLevel = 0,
-                LastMessage = DateTime.Now.ToUniversalTime(),
-                Streamer = s_doomce,
-                User = u_den_drummer
-            };
+            Viewer v_d_dd = NewViewer(s_doomce, u_den_drummer);
             viewers.Add(v_dd_d);
             #endregion
-
             #region Jakeo232
-            Viewer v_d_j = new Viewer()
-            {
-                Id = (ushort)(viewers.Count + 1),
-                ChatLevel = 0,
-                LastMessage = DateTime.Now.ToUniversalTime(),
-                Streamer = s_doomce,
-                User = u_jakeo232
-            };
+            Viewer v_d_j = NewViewer(s_doomce, u_jakeo232);
             viewers.Add(v_dd_j);
             #endregion
             #endregion
@@ -276,10 +184,7 @@ namespace ChatGame.DAL
 
         public IEnumerable<Streamer> ReadStreamers() => streamers;
 
-        public IEnumerable<User> ReadUsers()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<User> ReadUsers() => users;
 
         public IEnumerable<Viewer> ReadViewers(Streamer streamer) => viewers;
         #endregion
@@ -310,6 +215,62 @@ namespace ChatGame.DAL
 
         public void UpdateViewer(Viewer viewer) { }
         #endregion
+        #endregion
+
+        #region methods to simplify seed
+        private Emoji NewEmoji(string emojiText, Image image)
+        {
+            return new Emoji()
+            {
+                Id = (ushort)(emojis.Count + 1),
+                EmojiText = emojiText,
+                Rarity = 1,
+                TotalUses = 0,
+                Uses = 0,
+                Image = image
+            };
+        }
+
+        private Streamer NewStreamer(User user)
+        {
+            return new Streamer()
+            {
+                Id = (ushort)(streamers.Count + 1),
+                User = user,
+
+                #region location
+                XLocation = 0,
+                YLocation = 0,
+                #endregion
+
+                #region stats
+                Armor = 20,
+                AttackSpeed = 2.5,
+                Defense = 10,
+                Health = 100,
+                Level = 0,
+                MaxHealth = 100,
+                Speed = 3.4,
+                Strength = 21,
+                #endregion
+
+                #region other
+                Money = 0
+                #endregion
+            };
+        }
+
+        private Viewer NewViewer(Streamer streamer, User viewer)
+        {
+            return new Viewer()
+            {
+                Id = (ushort)(viewers.Count + 1),
+                ChatLevel = 0,
+                LastMessage = DateTime.Now.ToUniversalTime(),
+                Streamer = streamer,
+                User = viewer
+            };
+        }
         #endregion
     }
 }

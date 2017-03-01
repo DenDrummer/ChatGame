@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Choice" xml:space="preserve">
+    <value>Choice</value>
+  </data>
   <data name="Disclaimer" xml:space="preserve">
     <value>This console interface is temporary to be able to test the application and will allow some things the final product won't allow.</value>
   </data>
@@ -126,11 +129,17 @@
   <data name="Goodbye" xml:space="preserve">
     <value>Goodbye!</value>
   </data>
+  <data name="InvalidChoice" xml:space="preserve">
+    <value>This is not a valid choice!</value>
+  </data>
   <data name="NotImplementedYet" xml:space="preserve">
     <value>I'm sorry, but this feature has not been implemented yet. :(</value>
   </data>
   <data name="PressAnyKeyToExit" xml:space="preserve">
     <value>&lt;press any key to exit the program&gt;</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>quit</value>
   </data>
   <data name="ThanksForUsing" xml:space="preserve">
     <value>Thank you for trying out this very early version of</value>
@@ -139,7 +148,7 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.14</value>
+    <value>0.0.15</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
