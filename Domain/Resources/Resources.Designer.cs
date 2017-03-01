@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChatGame.BL.Properties {
+namespace ChatGame.BL.Domain.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ChatGame.BL.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.BL.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.BL.Domain.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,29 +70,11 @@ namespace ChatGame.BL.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is not a valid enemy!.
+        ///   Looks up a localized string similar to This is not a valid username!.
         /// </summary>
-        internal static string InvalidEnemy {
+        internal static string InvalidUserName {
             get {
-                return ResourceManager.GetString("InvalidEnemy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This is not a valid streamer!.
-        /// </summary>
-        internal static string InvalidStreamer {
-            get {
-                return ResourceManager.GetString("InvalidStreamer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This user has already been registered as a streamer!.
-        /// </summary>
-        internal static string StreamerExists {
-            get {
-                return ResourceManager.GetString("StreamerExists", resourceCulture);
+                return ResourceManager.GetString("InvalidUserName", resourceCulture);
             }
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChatGame.BL.Domain.Properties {
+namespace ChatGame.DAL.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ChatGame.BL.Domain.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.BL.Domain.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.DAL.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,22 @@ namespace ChatGame.BL.Domain.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is not a valid emoji!.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string InvalidEmoji {
+        internal static System.Drawing.Bitmap img_Kappa {
             get {
-                return ResourceManager.GetString("InvalidEmoji", resourceCulture);
+                object obj = ResourceManager.GetObject("img_Kappa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is not a valid username!.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string InvalidUserName {
+        internal static System.Drawing.Bitmap img_PJSalt {
             get {
-                return ResourceManager.GetString("InvalidUserName", resourceCulture);
+                object obj = ResourceManager.GetObject("img_PJSalt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

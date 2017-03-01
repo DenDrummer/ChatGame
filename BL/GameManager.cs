@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ChatGame.BL.Domain;
 using ChatGame.DAL;
 using System.ComponentModel.DataAnnotations;
-using ChatGame.BL.Properties;
 
 namespace ChatGame.BL
 {
@@ -64,7 +61,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.InvalidEmoji);
+                throw new ValidationException(Resources.Resources.InvalidEmoji);
         }
 
         private void ValidateEnemy(Enemy enemy)
@@ -73,7 +70,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.InvalidEnemy);
+                throw new ValidationException(Resources.Resources.InvalidEnemy);
         }
         #endregion
 
@@ -106,7 +103,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.InvalidStreamer);
+                throw new ValidationException(Resources.Resources.InvalidStreamer);
         }
 
         public Streamer AddStreamer(string streamerName)
@@ -114,7 +111,7 @@ namespace ChatGame.BL
             Streamer streamer = repo.ReadStreamers().ToList().Find(s => s.User.UserName.Equals(streamerName));
             if (streamer != null)
             {
-                throw new Exception(Resources.StreamerExists);
+                throw new Exception(Resources.Resources.StreamerExists);
             }
             else
             {

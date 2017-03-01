@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI_CA.Properties {
+namespace ChatGame.BL.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace UI_CA.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UI_CA.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.BL.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,42 @@ namespace UI_CA.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid emoji!.
+        /// </summary>
+        internal static string InvalidEmoji {
+            get {
+                return ResourceManager.GetString("InvalidEmoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid enemy!.
+        /// </summary>
+        internal static string InvalidEnemy {
+            get {
+                return ResourceManager.GetString("InvalidEnemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid streamer!.
+        /// </summary>
+        internal static string InvalidStreamer {
+            get {
+                return ResourceManager.GetString("InvalidStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user has already been registered as a streamer!.
+        /// </summary>
+        internal static string StreamerExists {
+            get {
+                return ResourceManager.GetString("StreamerExists", resourceCulture);
             }
         }
     }

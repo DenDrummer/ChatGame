@@ -1,7 +1,6 @@
 ﻿using ChatGame.BL.Domain;
 using System.Collections.Generic;
 using System;
-using ChatGame.DAL.Properties;
 
 namespace ChatGame.DAL
 {
@@ -39,7 +38,7 @@ namespace ChatGame.DAL
                 Rarity = 1,
                 TotalUses = 0,
                 Uses = 0,
-                Image = Resources.img_Kappa
+                Image = Resources.Resources.img_Kappa
             };
             emojis.Add(em1);
             #endregion
@@ -52,7 +51,7 @@ namespace ChatGame.DAL
                 Rarity = 1,
                 TotalUses = 0,
                 Uses = 0,
-                Image = Resources.img_PJSalt
+                Image = Resources.Resources.img_PJSalt
             };
             emojis.Add(em2);
             #endregion
