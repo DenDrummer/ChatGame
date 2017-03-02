@@ -42,5 +42,9 @@ namespace ChatGame.DAL
         void UpdateStreamer(Streamer streamer);
         void UpdateViewer(Viewer viewer);
         #endregion
+
+        #region login
+        IEnumerable<string> GetLoginData();
+        #endregion
     }
 }

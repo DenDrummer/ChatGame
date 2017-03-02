@@ -31,6 +31,7 @@ namespace ChatGame.UI_CA
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine($"0) {Resources.Resources.Quit}");
+            Console.WriteLine($"1) {Resources.Resources.LogChat}");
             Console.Write($"{Resources.Resources.Choice} => ");
             string choiceString = Console.ReadLine();
             int choice;
@@ -41,11 +42,19 @@ namespace ChatGame.UI_CA
                 case 0:
                     ShowMenu = false;
                     break;
+                case 1:
+                    LogChat();
+                    break;
                 default:
                     InvalidChoice();
                     break;
             }
             Console.WriteLine();
+        }
+
+        private static void LogChat()
+        {
+            NotImplementedYet();
         }
 
         private static void InvalidChoice()
@@ -56,7 +65,6 @@ namespace ChatGame.UI_CA
         private static void NotImplementedYet()
         {
             Console.WriteLine(Resources.Resources.NotImplementedYet);
-            Console.WriteLine();
         }
     }
 }

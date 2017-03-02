@@ -132,6 +132,9 @@
   <data name="InvalidChoice" xml:space="preserve">
     <value>This is not a valid choice!</value>
   </data>
+  <data name="LogChat" xml:space="preserve">
+    <value>log someone's chat</value>
+  </data>
   <data name="NotImplementedYet" xml:space="preserve">
     <value>I'm sorry, but this feature has not been implemented yet. :(</value>
   </data>

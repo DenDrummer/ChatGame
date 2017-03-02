@@ -88,7 +88,7 @@ namespace ChatGame.DAL
             #region Create viewers
             #region Den_drummer's viewers
             #region DoomCE
-            Viewer v_dd_d = NewViewer(s_den_drummer,u_doomce);
+            Viewer v_dd_d = NewViewer(s_den_drummer, u_doomce);
             viewers.Add(v_dd_d);
             #endregion
             #region Jakeo232
@@ -214,6 +214,18 @@ namespace ChatGame.DAL
         public void UpdateStreamer(Streamer streamer) { }
 
         public void UpdateViewer(Viewer viewer) { }
+        #endregion
+
+        #region login
+        public IEnumerable<string> GetLoginData()
+        {
+            List<string> loginData = new List<string>()
+            {
+                "chatgame"//,
+                //insert OAuth2 token here
+            };
+            return loginData;
+        }
         #endregion
         #endregion
 

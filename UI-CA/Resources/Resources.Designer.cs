@@ -106,6 +106,15 @@ namespace ChatGame.UI_CA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to log someone&apos;s chat.
+        /// </summary>
+        internal static string LogChat {
+            get {
+                return ResourceManager.GetString("LogChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;m sorry, but this feature has not been implemented yet. :(.
         /// </summary>
         internal static string NotImplementedYet {
