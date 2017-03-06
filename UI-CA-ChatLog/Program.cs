@@ -10,12 +10,14 @@ namespace ChatGame.UI_CA_ChatLog
         static void Main(string[] args)
         {
             string loggedChat = GetChat();
+
+            Console.ReadKey();
         }
 
         private static string GetChat()
         {
             string chat = null;
-            while (!string.IsNullOrEmpty(chat))
+            while (string.IsNullOrEmpty(chat))
             {
                 Console.WriteLine(Resources.Resources.AskWhoToLog);
                 Console.Write("=> ");

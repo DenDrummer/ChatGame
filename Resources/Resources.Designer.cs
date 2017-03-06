@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChatGame.UI_CA.Resources {
+namespace ChatGame.Resources {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace ChatGame.UI_CA.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace ChatGame.UI_CA.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.UI_CA.Resources.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChatGame.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ChatGame.UI_CA.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Choice.
         /// </summary>
-        internal static string Choice {
+        public static string Choice {
             get {
                 return ResourceManager.GetString("Choice", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to This console interface is temporary to be able to test the application and will allow some things the final product won&apos;t allow..
         /// </summary>
-        internal static string Disclaimer {
+        public static string Disclaimer {
             get {
                 return ResourceManager.GetString("Disclaimer", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to ChatGame.
         /// </summary>
-        internal static string GameTitle {
+        public static string GameTitle {
             get {
                 return ResourceManager.GetString("GameTitle", resourceCulture);
             }
@@ -90,25 +90,91 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Goodbye!.
         /// </summary>
-        internal static string Goodbye {
+        public static string Goodbye {
             get {
                 return ResourceManager.GetString("Goodbye", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_imGlitch {
+            get {
+                object obj = ResourceManager.GetObject("img_imGlitch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_Kappa {
+            get {
+                object obj = ResourceManager.GetObject("img_Kappa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_PJSalt {
+            get {
+                object obj = ResourceManager.GetObject("img_PJSalt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is not a valid choice!.
         /// </summary>
-        internal static string InvalidChoice {
+        public static string InvalidChoice {
             get {
                 return ResourceManager.GetString("InvalidChoice", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a valid emoji!.
+        /// </summary>
+        public static string InvalidEmoji {
+            get {
+                return ResourceManager.GetString("InvalidEmoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid enemy!.
+        /// </summary>
+        public static string InvalidEnemy {
+            get {
+                return ResourceManager.GetString("InvalidEnemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid streamer!.
+        /// </summary>
+        public static string InvalidStreamer {
+            get {
+                return ResourceManager.GetString("InvalidStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid username!.
+        /// </summary>
+        public static string InvalidUserName {
+            get {
+                return ResourceManager.GetString("InvalidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to log someone&apos;s chat.
         /// </summary>
-        internal static string LogChat {
+        public static string LogChat {
             get {
                 return ResourceManager.GetString("LogChat", resourceCulture);
             }
@@ -117,7 +183,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to I&apos;m sorry, but this feature has not been implemented yet. :(.
         /// </summary>
-        internal static string NotImplementedYet {
+        public static string NotImplementedYet {
             get {
                 return ResourceManager.GetString("NotImplementedYet", resourceCulture);
             }
@@ -126,7 +192,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;press any key to exit the program&gt;.
         /// </summary>
-        internal static string PressAnyKeyToExit {
+        public static string PressAnyKeyToExit {
             get {
                 return ResourceManager.GetString("PressAnyKeyToExit", resourceCulture);
             }
@@ -135,16 +201,25 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to quit.
         /// </summary>
-        internal static string Quit {
+        public static string Quit {
             get {
                 return ResourceManager.GetString("Quit", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user has already been registered as a streamer!.
+        /// </summary>
+        public static string StreamerExists {
+            get {
+                return ResourceManager.GetString("StreamerExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thank you for trying out this very early version of.
         /// </summary>
-        internal static string ThanksForUsing {
+        public static string ThanksForUsing {
             get {
                 return ResourceManager.GetString("ThanksForUsing", resourceCulture);
             }
@@ -153,16 +228,16 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to version.
         /// </summary>
-        internal static string Version {
+        public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.15.
+        ///   Looks up a localized string similar to 0.0.16.
         /// </summary>
-        internal static string VersionId {
+        public static string VersionId {
             get {
                 return ResourceManager.GetString("VersionId", resourceCulture);
             }
@@ -171,7 +246,7 @@ namespace ChatGame.UI_CA.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Welcome to.
         /// </summary>
-        internal static string Welcome {
+        public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
             }
