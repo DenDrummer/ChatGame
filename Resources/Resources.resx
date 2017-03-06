@@ -176,9 +176,12 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.16</value>
+    <value>0.0.17</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
+  </data>
+  <data name="AskWhoToLog" xml:space="preserve">
+    <value>Whose chat do you want to log?</value>
   </data>
 </root>

@@ -1,9 +1,5 @@
 ﻿using ChatGame.BL.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatGame.BL
 {
@@ -16,7 +12,9 @@ namespace ChatGame.BL
         Enemy AddEnemy(Enemy enemy);
         Streamer AddStreamer(string streamerName);
         Streamer AddStreamer(Streamer streamer);
-        Viewer AddViewer(string userName, string streamerName);
+        User AddUser(string userName);
+        User AddUser(User user);
+        Viewer AddViewer(string viewerName, string streamerName);
         Viewer AddViewer(Viewer viewer);
         #endregion
 
@@ -41,8 +39,9 @@ namespace ChatGame.BL
         Emoji GetEmoji(string emojiTekst);
         Enemy GetEnemy(int enemyId);
         Streamer GetStreamer(int streamerId);
-        Streamer GetStreamer(string userName);
+        Streamer GetStreamer(string streamerName);
         User GetUser(int userId);
+        User GetUser(string userName);
         Viewer GetViewer(int viewerId);
         #endregion
 

@@ -61,6 +61,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Whose chat do you want to log?.
+        /// </summary>
+        public static string AskWhoToLog {
+            get {
+                return ResourceManager.GetString("AskWhoToLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choice.
         /// </summary>
         public static string Choice {
@@ -235,7 +244,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.16.
+        ///   Looks up a localized string similar to 0.0.17.
         /// </summary>
         public static string VersionId {
             get {

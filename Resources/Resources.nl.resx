@@ -117,10 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AskWhoToLog" xml:space="preserve">
+    <value>Wiens chat wil je loggen?</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>keuze</value>
+  </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Deze console-interface is tijdelijk om de applicatie te testen and zal enkele dingen toelaten dat het uitijndelijke product niet zal toelaten.</value>
+  </data>
+  <data name="InvalidChoice" xml:space="preserve">
+    <value>Dit is geen geldige keuze!</value>
+  </data>
   <data name="InvalidEmoji" xml:space="preserve">
     <value>Dit is geen geldige emoji!</value>
   </data>
+  <data name="InvalidEnemy" xml:space="preserve">
+    <value>Dit is geen geldige vijand!</value>
+  </data>
+  <data name="InvalidStreamer" xml:space="preserve">
+    <value>Dit is geen geldige streamer!</value>
+  </data>
   <data name="InvalidUserName" xml:space="preserve">
     <value>Dit is geen geldige gebruikersnaam!</value>
+  </data>
+  <data name="LogChat" xml:space="preserve">
+    <value>log iemands chat</value>
+  </data>
+  <data name="NotImplementedYet" xml:space="preserve">
+    <value>Mijn excuses, maar deze feature is nog niet geïmplementeerd. :(</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>sluiten</value>
+  </data>
+  <data name="StreamerExists" xml:space="preserve">
+    <value>Deze gebruiker is reeds geregistreerd als streamer!</value>
+  </data>
+  <data name="ThanksForUsing" xml:space="preserve">
+    <value>Hartelijk bedankt voor het testen van deze zeer vroege versie van</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>versie</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welkom bij</value>
   </data>
 </root>

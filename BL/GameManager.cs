@@ -29,16 +29,63 @@ namespace ChatGame.BL
             ValidateEnemy(enemy);
             return repo.CreateEnemy(enemy);
         }
+
+        public Streamer AddStreamer(Streamer streamer)
+        {
+            ValidateStreamer(streamer);
+            return repo.CreateStreamer(streamer);
+        }
         #endregion
 
         #region Add from details methods
-        public Emoji AddEmoji(string emojiTekst, int rarity) => new Emoji()
+        public Emoji AddEmoji(string emojiTekst, int rarity)
         {
-            EmojiText = emojiTekst,
-            Rarity = (ushort)rarity,
-            Uses = 0,
-            TotalUses = 0
-        };
+            return AddEmoji(new Emoji()
+            {
+                EmojiText = emojiTekst,
+                Rarity = (ushort)rarity,
+                Uses = 0,
+                TotalUses = 0
+            });
+        }
+
+        public Enemy AddEnemy(string emojiTekst, string streamerName)
+        {
+            Emoji em = GetEmoji(emojiTekst);
+            Streamer s = GetStreamer(streamerName);
+            double statBase = s.Id * em.Id / 10;
+            return AddEnemy(new Enemy()
+            {
+                Emoji = em,
+                Streamer = s,
+                AttackSpeed = statBase,
+                Armor = statBase * 1.1,
+                Defense = statBase * 1.2,
+                Health = statBase * 100
+            });
+        }
+
+        public Streamer AddStreamer(string streamerName)
+        {
+            Streamer streamer = GetStreamer(streamerName);
+            if (streamer != null)
+            {
+                throw new Exception(Resources.Resources.StreamerExists);
+            }
+            else
+            {
+                User user = GetUser(streamerName);
+                if (user != null)
+                {
+                    return CreateDefaultStreamer(user);
+                }
+                else
+                {
+                    AddUser(streamerName);
+                    throw new NotImplementedException();
+                }
+            }
+        }
         #endregion
         #endregion
 
@@ -49,6 +96,19 @@ namespace ChatGame.BL
         #endregion
 
         #region Get single methods
+        public Streamer GetStreamer(string streamerName)
+        {
+            return repo.ReadStreamers()
+                .ToList()
+                .Find(s => s.User.UserName.Equals(streamerName));
+        }
+
+        public User GetUser(string userName)
+        {
+            return repo.ReadUsers()
+                .ToList()
+                .Find(u => u.UserName.Equals(userName));
+        }
         #endregion
 
         #region Remove methods
@@ -74,29 +134,6 @@ namespace ChatGame.BL
         }
         #endregion
 
-        public Enemy AddEnemy(string emojiTekst, string streamerName)
-        {
-            Emoji em = GetEmoji(emojiTekst);
-            Streamer s = GetStreamer(streamerName);
-            double statBase = s.Id * em.Id / 10;
-            Enemy en = new Enemy()
-            {
-                Emoji = em,
-                Streamer = s,
-                AttackSpeed = statBase,
-                Armor = statBase * 1.1,
-                Defense = statBase * 1.2,
-                Health = statBase * 100
-            };
-            return en;
-        }
-
-        public Streamer AddStreamer(Streamer streamer)
-        {
-            ValidateStreamer(streamer);
-            return repo.CreateStreamer(streamer);
-        }
-
         private void ValidateStreamer(Streamer streamer)
         {
             List<ValidationResult> errors = new List<ValidationResult>();
@@ -104,26 +141,6 @@ namespace ChatGame.BL
 
             if (!valid)
                 throw new ValidationException(Resources.Resources.InvalidStreamer);
-        }
-
-        public Streamer AddStreamer(string streamerName)
-        {
-            Streamer streamer = repo.ReadStreamers().ToList().Find(s => s.User.UserName.Equals(streamerName));
-            if (streamer != null)
-            {
-                throw new Exception(Resources.Resources.StreamerExists);
-            }
-            else
-            {
-                if (repo.ReadUsers().ToList().Find(u => u.UserName.Equals(streamerName)) != null)
-                {
-                    throw new NotImplementedException();
-                }
-                else
-                {
-                    throw new NotImplementedException();
-                }
-            }
         }
 
         public Viewer AddViewer(Viewer viewer)
@@ -241,9 +258,35 @@ namespace ChatGame.BL
             throw new NotImplementedException();
         }
 
-        public Streamer GetStreamer(string userName)
+        #region other
+        private Streamer CreateDefaultStreamer(User user)
+        {
+            return AddStreamer(new Streamer()
+            {
+                User = user,
+                Armor = 0,
+                AttackSpeed = 1,
+                Defense = 0,
+                Health = 1,
+                Level = 0,
+                MaxHealth = 1,
+                Money = 0,
+                Speed = 1,
+                Strength = 1,
+                XLocation = 0,
+                YLocation = 0,
+            });
+        }
+
+        public User AddUser(string userName)
         {
             throw new NotImplementedException();
         }
+
+        public User AddUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
