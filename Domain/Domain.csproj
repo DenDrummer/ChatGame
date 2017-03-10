@@ -42,14 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character.cs" />
-    <Compile Include="Emoji.cs" />
-    <Compile Include="Enemy.cs" />
-    <Compile Include="Message.cs" />
+    <Compile Include="Game\Character.cs" />
+    <Compile Include="Game\Emoji.cs" />
+    <Compile Include="Game\Enemy.cs" />
+    <Compile Include="Twitch\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Streamer.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Viewer.cs" />
+    <Compile Include="Game\Streamer.cs" />
+    <Compile Include="Game\User.cs" />
+    <Compile Include="Game\Viewer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{0E4275BC-9359-4EF6-AFA5-2698A119AC94}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

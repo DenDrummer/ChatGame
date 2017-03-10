@@ -10,8 +10,14 @@ namespace ChatGame.UI_CA_ChatLog
         static void Main(string[] args)
         {
             string loggedChat = GetChat();
-
+            Connect(loggedChat);
+            Console.WriteLine(Resources.Resources.PressAnyKeyToExit);
             Console.ReadKey();
+        }
+
+        private static void Connect(string loggedChat)
+        {
+            Console.WriteLine(Resources.Resources.NotImplementedYet);
         }
 
         private static string GetChat()
@@ -22,11 +28,13 @@ namespace ChatGame.UI_CA_ChatLog
                 Console.WriteLine(Resources.Resources.AskWhoToLog);
                 Console.Write("=> ");
                 string input = Console.ReadLine();
-                //the line below will give an error as it has not been implemented yet in the GameManager class
                 Streamer s = mgr.GetStreamer(input);
                 chat = s.User.UserName;
             }
             return chat;
         }
+
+        //to be able to run it from another project
+        public string ReturnPath() => Environment.CurrentDirectory;
     }
 }

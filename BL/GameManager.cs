@@ -35,6 +35,12 @@ namespace ChatGame.BL
             ValidateStreamer(streamer);
             return repo.CreateStreamer(streamer);
         }
+
+        public Viewer AddViewer(Viewer viewer)
+        {
+            ValidateViewer(viewer);
+            return repo.CreateViewer(viewer);
+        }
         #endregion
 
         #region Add from details methods
@@ -70,7 +76,7 @@ namespace ChatGame.BL
             Streamer streamer = GetStreamer(streamerName);
             if (streamer != null)
             {
-                throw new Exception(Resources.Resources.StreamerExists);
+                throw new Exception(Resources.Resources.ExistingStreamer);
             }
             else
             {
@@ -81,78 +87,42 @@ namespace ChatGame.BL
                 }
                 else
                 {
-                    AddUser(streamerName);
-                    throw new NotImplementedException();
+                    user = AddUser(streamerName);
+                    return CreateDefaultStreamer(user);
                 }
+            }
+        }
+
+        public Viewer AddViewer(string viewerName, string streamerName)
+        {
+            Streamer streamer = GetStreamer(streamerName);
+            if (streamer != null)
+            {
+                return AddViewer(viewerName, streamer);
+            }
+            else
+            {
+                return AddViewer(viewerName, AddStreamer(streamerName));
+            }
+        }
+
+        public Viewer AddViewer(string viewerName, Streamer streamer)
+        {
+            Viewer viewer = GetViewer(viewerName, streamer);
+            if (viewer != null)
+            {
+                throw new Exception(Resources.Resources.ExistingViewer);
+            }
+            else
+            {
+
+                throw new NotImplementedException();
             }
         }
         #endregion
         #endregion
 
         #region Change methods
-        #endregion
-
-        #region Get multiple methods
-        #endregion
-
-        #region Get single methods
-        public Streamer GetStreamer(string streamerName)
-        {
-            return repo.ReadStreamers()
-                .ToList()
-                .Find(s => s.User.UserName.Equals(streamerName));
-        }
-
-        public User GetUser(string userName)
-        {
-            return repo.ReadUsers()
-                .ToList()
-                .Find(u => u.UserName.Equals(userName));
-        }
-        #endregion
-
-        #region Remove methods
-        #endregion
-
-        #region Validate methods
-        private void ValidateEmoji(Emoji emoji)
-        {
-            List<ValidationResult> errors = new List<ValidationResult>();
-            bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
-
-            if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidEmoji);
-        }
-
-        private void ValidateEnemy(Enemy enemy)
-        {
-            List<ValidationResult> errors = new List<ValidationResult>();
-            bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
-
-            if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidEnemy);
-        }
-        #endregion
-
-        private void ValidateStreamer(Streamer streamer)
-        {
-            List<ValidationResult> errors = new List<ValidationResult>();
-            bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
-
-            if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidStreamer);
-        }
-
-        public Viewer AddViewer(Viewer viewer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Viewer AddViewer(string userName, string streamerName)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ChangeEmoji(Emoji emoji)
         {
             throw new NotImplementedException();
@@ -177,11 +147,84 @@ namespace ChatGame.BL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region Get multiple methods
+        #endregion
+
+        #region Get single methods
         public Emoji GetEmoji(string emojiTekst)
         {
             throw new NotImplementedException();
         }
+
+        public Streamer GetStreamer(string streamerName)
+        {
+            return repo.ReadStreamers()
+                .ToList()
+                .Find(s => s.User.UserName.Equals(streamerName));
+        }
+
+        public User GetUser(string userName)
+        {
+            return repo.ReadUsers()
+                .ToList()
+                .Find(u => u.UserName.Equals(userName));
+        }
+
+        public Viewer GetViewer(string viewerName, string streamerName)
+        {
+            return GetViewer(viewerName, GetStreamer(streamerName));
+        }
+
+        public Viewer GetViewer(string viewerName, Streamer streamer)
+        {
+            return repo.ReadViewers(streamer)
+                .ToList()
+                .Find(v => v.User.UserName.Equals(viewerName));
+        }
+        #endregion
+
+        #region Remove methods
+        #endregion
+
+        #region Validate methods
+        private void ValidateEmoji(Emoji emoji)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.Resources.InvalidEmoji);
+        }
+
+        private void ValidateEnemy(Enemy enemy)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.Resources.InvalidEnemy);
+        }
+
+        private void ValidateStreamer(Streamer streamer)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.Resources.InvalidStreamer);
+        }
+
+        private void ValidateViewer(Viewer viewer)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(viewer, new ValidationContext(viewer), errors, validateAllProperties: true);
+
+            if (!valid)
+                throw new ValidationException(Resources.Resources.InvalidViewer);
+        }
+        #endregion
 
         public IEnumerable<Emoji> GetEmojis()
         {

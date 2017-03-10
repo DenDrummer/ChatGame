@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace ChatGame.UI_CA
 {
@@ -29,37 +30,79 @@ namespace ChatGame.UI_CA
 
         private static void MainMenu()
         {
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine($"0) {Resources.Resources.Quit}");
-            Console.WriteLine($"1) {Resources.Resources.LogChat}");
+            Console.WriteLine(Resources.Resources.MainMenuText);
             Console.Write($"{Resources.Resources.Choice} => ");
-            string choiceString = Console.ReadLine();
-            int choice;
-            int.TryParse(choiceString, out choice);
+            string command = Console.ReadLine().ToLower();
             Console.WriteLine();
-            switch (choice)
+            switch (command.Split(' ')[0])
             {
-                case 0:
-                    ShowMenu = false;
+                case "commands":
+                    ListCommands();
                     break;
-                case 1:
+                case "help":
+                    Help(command);
+                    break;
+                case "logchat":
                     LogChat();
                     break;
+                case "quit":
+                    ShowMenu = false;
+                    break;
                 default:
-                    InvalidChoice();
+                    InvalidCommand();
                     break;
             }
             Console.WriteLine();
         }
 
-        private static void LogChat()
+        private static void ListCommands()
         {
-            NotImplementedYet();
+            Console.WriteLine($"commands");
+            Console.WriteLine($"help");
+            Console.WriteLine($"logchat");
+            Console.WriteLine($"quit");
         }
 
-        private static void InvalidChoice()
+        private static void Help(string command)
         {
-            Console.WriteLine(Resources.Resources.InvalidChoice);
+            string[] parms = command.Split(' ');
+            if (parms.Length == 1)
+            {
+                Console.WriteLine(Resources.Resources.HelpMain);
+            }
+            else
+            {
+                Console.Write($"{parms[1]} ");
+                switch (parms[1])
+                {
+                    case "commands":
+                        Console.WriteLine(Resources.Resources.HelpCommands);
+                        break;
+                    case "help":
+                        Console.WriteLine(Resources.Resources.HelpHelp);
+                        break;
+                    case "logchat":
+                        Console.WriteLine(Resources.Resources.HelpLogchat);
+                        break;
+                    case "quit":
+                        Console.WriteLine(Resources.Resources.HelpQuit);
+                        break;
+                    default:
+                        InvalidCommand();
+                        break;
+                }
+            }
+        }
+
+        private static void LogChat()
+        {
+            UI_CA_ChatLog.Program p = new UI_CA_ChatLog.Program();
+            Process.Start($"{p.ReturnPath()}\\ChatGame.UI-CA-ChatLog.exe");
+        }
+
+        private static void InvalidCommand()
+        {
+            Console.WriteLine(Resources.Resources.InvalidCommand);
         }
 
         private static void NotImplementedYet()

@@ -126,8 +126,8 @@
   <data name="Disclaimer" xml:space="preserve">
     <value>Deze console-interface is tijdelijk om de applicatie te testen and zal enkele dingen toelaten dat het uitijndelijke product niet zal toelaten.</value>
   </data>
-  <data name="InvalidChoice" xml:space="preserve">
-    <value>Dit is geen geldige keuze!</value>
+  <data name="InvalidCommand" xml:space="preserve">
+    <value>Dit is geen geldig commando!</value>
   </data>
   <data name="InvalidEmoji" xml:space="preserve">
     <value>Dit is geen geldige emoji!</value>
@@ -141,14 +141,8 @@
   <data name="InvalidUserName" xml:space="preserve">
     <value>Dit is geen geldige gebruikersnaam!</value>
   </data>
-  <data name="LogChat" xml:space="preserve">
-    <value>log iemands chat</value>
-  </data>
   <data name="NotImplementedYet" xml:space="preserve">
     <value>Mijn excuses, maar deze feature is nog niet geïmplementeerd. :(</value>
-  </data>
-  <data name="Quit" xml:space="preserve">
-    <value>sluiten</value>
   </data>
   <data name="StreamerExists" xml:space="preserve">
     <value>Deze gebruiker is reeds geregistreerd als streamer!</value>

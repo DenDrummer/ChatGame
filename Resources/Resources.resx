@@ -139,8 +139,8 @@
   <data name="img_PJSalt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\PJSalt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="InvalidChoice" xml:space="preserve">
-    <value>This is not a valid choice!</value>
+  <data name="InvalidCommand" xml:space="preserve">
+    <value>This is not a valid command!</value>
   </data>
   <data name="InvalidEmoji" xml:space="preserve">
     <value>This is not a valid emoji!</value>
@@ -154,19 +154,13 @@
   <data name="InvalidUserName" xml:space="preserve">
     <value>This is not a valid username!</value>
   </data>
-  <data name="LogChat" xml:space="preserve">
-    <value>log someone's chat</value>
-  </data>
   <data name="NotImplementedYet" xml:space="preserve">
     <value>I'm sorry, but this feature has not been implemented yet. :(</value>
   </data>
   <data name="PressAnyKeyToExit" xml:space="preserve">
     <value>&lt;press any key to exit the program&gt;</value>
   </data>
-  <data name="Quit" xml:space="preserve">
-    <value>quit</value>
-  </data>
-  <data name="StreamerExists" xml:space="preserve">
+  <data name="ExistingStreamer" xml:space="preserve">
     <value>This user has already been registered as a streamer!</value>
   </data>
   <data name="ThanksForUsing" xml:space="preserve">
@@ -176,12 +170,36 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.17</value>
+    <value>0.0.18</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
   </data>
   <data name="AskWhoToLog" xml:space="preserve">
     <value>Whose chat do you want to log?</value>
+  </data>
+  <data name="InvalidViewer" xml:space="preserve">
+    <value>This is not a valid viewer!</value>
+  </data>
+  <data name="ExistingViewer" xml:space="preserve">
+    <value>This user has already been registered to be viewing this user!</value>
+  </data>
+  <data name="HelpCommands" xml:space="preserve">
+    <value>Show a list of all available commands.</value>
+  </data>
+  <data name="HelpHelp" xml:space="preserve">
+    <value>Get to learn more about commands.</value>
+  </data>
+  <data name="HelpLogchat" xml:space="preserve">
+    <value>Open a separate console to keep an eye out on someone's chat.</value>
+  </data>
+  <data name="HelpMain" xml:space="preserve">
+    <value>Type "help [command]" to learn more about a command.</value>
+  </data>
+  <data name="HelpQuit" xml:space="preserve">
+    <value>Close this terminal. Won't close other windows you may have opened!</value>
+  </data>
+  <data name="MainMenuText" xml:space="preserve">
+    <value>What would you like to do? (type "commands" for a list of commands)</value>
   </data>
 </root>

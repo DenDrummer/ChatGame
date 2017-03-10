@@ -62,6 +62,10 @@
       <Project>{0e4275bc-9359-4ef6-afa5-2698a119ac94}</Project>
       <Name>Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UI-CA-ChatLog\UI-CA-ChatLog.csproj">
+      <Project>{b511a094-4384-44af-bbd9-629c9bfa4b79}</Project>
+      <Name>UI-CA-ChatLog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

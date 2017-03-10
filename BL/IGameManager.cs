@@ -43,6 +43,7 @@ namespace ChatGame.BL
         User GetUser(int userId);
         User GetUser(string userName);
         Viewer GetViewer(int viewerId);
+        Viewer GetViewer(string viewerName, Streamer streamer);
         #endregion
 
         #region Remove methods

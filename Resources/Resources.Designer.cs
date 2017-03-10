@@ -88,6 +88,24 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user has already been registered as a streamer!.
+        /// </summary>
+        public static string ExistingStreamer {
+            get {
+                return ResourceManager.GetString("ExistingStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user has already been registered to be viewing this user!.
+        /// </summary>
+        public static string ExistingViewer {
+            get {
+                return ResourceManager.GetString("ExistingViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ChatGame.
         /// </summary>
         public static string GameTitle {
@@ -102,6 +120,51 @@ namespace ChatGame.Resources {
         public static string Goodbye {
             get {
                 return ResourceManager.GetString("Goodbye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show a list of all available commands..
+        /// </summary>
+        public static string HelpCommands {
+            get {
+                return ResourceManager.GetString("HelpCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get to learn more about commands..
+        /// </summary>
+        public static string HelpHelp {
+            get {
+                return ResourceManager.GetString("HelpHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open a separate console to keep an eye out on someone&apos;s chat..
+        /// </summary>
+        public static string HelpLogchat {
+            get {
+                return ResourceManager.GetString("HelpLogchat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type &quot;help [command]&quot; to learn more about a command..
+        /// </summary>
+        public static string HelpMain {
+            get {
+                return ResourceManager.GetString("HelpMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close this terminal. Won&apos;t close other windows you may have opened!.
+        /// </summary>
+        public static string HelpQuit {
+            get {
+                return ResourceManager.GetString("HelpQuit", resourceCulture);
             }
         }
         
@@ -136,11 +199,11 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is not a valid choice!.
+        ///   Looks up a localized string similar to This is not a valid command!.
         /// </summary>
-        public static string InvalidChoice {
+        public static string InvalidCommand {
             get {
-                return ResourceManager.GetString("InvalidChoice", resourceCulture);
+                return ResourceManager.GetString("InvalidCommand", resourceCulture);
             }
         }
         
@@ -181,11 +244,20 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to log someone&apos;s chat.
+        ///   Looks up a localized string similar to This is not a valid viewer!.
         /// </summary>
-        public static string LogChat {
+        public static string InvalidViewer {
             get {
-                return ResourceManager.GetString("LogChat", resourceCulture);
+                return ResourceManager.GetString("InvalidViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What would you like to do? (type &quot;commands&quot; for a list of commands).
+        /// </summary>
+        public static string MainMenuText {
+            get {
+                return ResourceManager.GetString("MainMenuText", resourceCulture);
             }
         }
         
@@ -208,24 +280,6 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to quit.
-        /// </summary>
-        public static string Quit {
-            get {
-                return ResourceManager.GetString("Quit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This user has already been registered as a streamer!.
-        /// </summary>
-        public static string StreamerExists {
-            get {
-                return ResourceManager.GetString("StreamerExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Thank you for trying out this very early version of.
         /// </summary>
         public static string ThanksForUsing {
@@ -244,7 +298,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.17.
+        ///   Looks up a localized string similar to 0.0.18.
         /// </summary>
         public static string VersionId {
             get {
