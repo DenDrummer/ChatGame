@@ -262,6 +262,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The issuer is not an admin.
+        /// </summary>
+        public static string NonAdminError {
+            get {
+                return ResourceManager.GetString("NonAdminError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;m sorry, but this feature has not been implemented yet. :(.
         /// </summary>
         public static string NotImplementedYet {
@@ -289,6 +298,24 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user is not a registered livestreamer..
+        /// </summary>
+        public static string UnregisteredStreamer {
+            get {
+                return ResourceManager.GetString("UnregisteredStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This username is not linked to a registered user..
+        /// </summary>
+        public static string UnregisteredUser {
+            get {
+                return ResourceManager.GetString("UnregisteredUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to version.
         /// </summary>
         public static string Version {
@@ -298,7 +325,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.18.
+        ///   Looks up a localized string similar to 0.0.19.
         /// </summary>
         public static string VersionId {
             get {

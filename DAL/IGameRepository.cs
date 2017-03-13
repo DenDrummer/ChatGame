@@ -24,7 +24,7 @@ namespace ChatGame.DAL
         IEnumerable<Enemy> ReadEnemies();
         IEnumerable<Streamer> ReadStreamers();
         IEnumerable<User> ReadUsers();
-        IEnumerable<Viewer> ReadViewers(Streamer streamer);
+        IEnumerable<Viewer> ReadViewers();
         #endregion
 
         #region Read single methods

@@ -150,24 +150,47 @@ namespace ChatGame.BL
         #endregion
 
         #region Get multiple methods
+        public IEnumerable<Emoji> GetEmojis()
+        {
+            return repo.ReadEmojis();
+        }
+
+        public IEnumerable<Streamer> GetStreamers()
+        {
+            return repo.ReadStreamers();
+        }
+
+        public IEnumerable<User> GetUsers()
+        {
+            return repo.ReadUsers();
+        }
+
+        public IEnumerable<Viewer> GetViewers(Streamer streamer)
+        {
+            return repo.ReadViewers()
+                .ToList()
+                .Where(v => v.Streamer.Equals(streamer));
+        }
         #endregion
 
         #region Get single methods
         public Emoji GetEmoji(string emojiTekst)
         {
-            throw new NotImplementedException();
+            return GetEmojis()
+                .ToList()
+                .Find(em => em.EmojiText.Equals(emojiTekst));
         }
 
         public Streamer GetStreamer(string streamerName)
         {
-            return repo.ReadStreamers()
+            return GetStreamers()
                 .ToList()
                 .Find(s => s.User.UserName.Equals(streamerName));
         }
 
         public User GetUser(string userName)
         {
-            return repo.ReadUsers()
+            return GetUsers()
                 .ToList()
                 .Find(u => u.UserName.Equals(userName));
         }
@@ -179,7 +202,7 @@ namespace ChatGame.BL
 
         public Viewer GetViewer(string viewerName, Streamer streamer)
         {
-            return repo.ReadViewers(streamer)
+            return GetViewers(streamer)
                 .ToList()
                 .Find(v => v.User.UserName.Equals(viewerName));
         }
@@ -226,11 +249,6 @@ namespace ChatGame.BL
         }
         #endregion
 
-        public IEnumerable<Emoji> GetEmojis()
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Enemy> GetEnemiesOfStreamer(int streamerId)
         {
             throw new NotImplementedException();
@@ -251,17 +269,7 @@ namespace ChatGame.BL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Streamer> GetStreamers()
-        {
-            throw new NotImplementedException();
-        }
-
         public User GetUser(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> GetUsers()
         {
             throw new NotImplementedException();
         }
@@ -329,6 +337,18 @@ namespace ChatGame.BL
         public User AddUser(User user)
         {
             throw new NotImplementedException();
+        }
+
+        public void SetAdmin(User user, User issuer)
+        {
+            if (issuer.IsAdmin)
+            {
+                user.IsAdmin = true;
+            }
+            else
+            {
+                throw new Exception($"NonAdminError: {Resources.Resources.NonAdminError}");
+            }
         }
         #endregion
     }

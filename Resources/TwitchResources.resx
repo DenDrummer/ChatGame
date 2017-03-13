@@ -117,98 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Choice" xml:space="preserve">
-    <value>Choice</value>
+  <data name="AccountPattern" xml:space="preserve">
+    <value>[a-zA-Z0-9_]{4,25}</value>
   </data>
-  <data name="Disclaimer" xml:space="preserve">
-    <value>This console interface is temporary to be able to test the application and will allow some things the final product won't allow.</value>
+  <data name="ChatCmdId" xml:space="preserve">
+    <value>PRIVMSG</value>
   </data>
-  <data name="GameTitle" xml:space="preserve">
-    <value>ChatGame</value>
+  <data name="Token" xml:space="preserve">
+    <value>oauth:nm2vkaigqi8vqtuynae055zxw2o0jr</value>
   </data>
-  <data name="Goodbye" xml:space="preserve">
-    <value>Goodbye!</value>
+  <data name="TwitchIrc" xml:space="preserve">
+    <value>irc.twitch.tv</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="img_imGlitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\imGlitch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TwitchIrcPort" xml:space="preserve">
+    <value>6667</value>
   </data>
-  <data name="img_Kappa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\Kappa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="img_PJSalt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\PJSalt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InvalidCommand" xml:space="preserve">
-    <value>This is not a valid command!</value>
-  </data>
-  <data name="InvalidEmoji" xml:space="preserve">
-    <value>This is not a valid emoji!</value>
-  </data>
-  <data name="InvalidEnemy" xml:space="preserve">
-    <value>This is not a valid enemy!</value>
-  </data>
-  <data name="InvalidStreamer" xml:space="preserve">
-    <value>This is not a valid streamer!</value>
-  </data>
-  <data name="InvalidUserName" xml:space="preserve">
-    <value>This is not a valid username!</value>
-  </data>
-  <data name="NotImplementedYet" xml:space="preserve">
-    <value>I'm sorry, but this feature has not been implemented yet. :(</value>
-  </data>
-  <data name="PressAnyKeyToExit" xml:space="preserve">
-    <value>&lt;press any key to exit the program&gt;</value>
-  </data>
-  <data name="ExistingStreamer" xml:space="preserve">
-    <value>This user has already been registered as a streamer!</value>
-  </data>
-  <data name="ThanksForUsing" xml:space="preserve">
-    <value>Thank you for trying out this very early version of</value>
-  </data>
-  <data name="Version" xml:space="preserve">
-    <value>version</value>
-  </data>
-  <data name="VersionId" xml:space="preserve">
-    <value>0.0.19</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome to</value>
-  </data>
-  <data name="AskWhoToLog" xml:space="preserve">
-    <value>Whose chat do you want to log?</value>
-  </data>
-  <data name="InvalidViewer" xml:space="preserve">
-    <value>This is not a valid viewer!</value>
-  </data>
-  <data name="ExistingViewer" xml:space="preserve">
-    <value>This user has already been registered to be viewing this user!</value>
-  </data>
-  <data name="HelpCommands" xml:space="preserve">
-    <value>Show a list of all available commands.</value>
-  </data>
-  <data name="HelpHelp" xml:space="preserve">
-    <value>Get to learn more about commands.</value>
-  </data>
-  <data name="HelpLogchat" xml:space="preserve">
-    <value>Open a separate console to keep an eye out on someone's chat.</value>
-  </data>
-  <data name="HelpMain" xml:space="preserve">
-    <value>Type "help [command]" to learn more about a command.</value>
-  </data>
-  <data name="HelpQuit" xml:space="preserve">
-    <value>Close this terminal. Won't close other windows you may have opened!</value>
-  </data>
-  <data name="MainMenuText" xml:space="preserve">
-    <value>What would you like to do? (type "commands" for a list of commands)</value>
-  </data>
-  <data name="UnregisteredStreamer" xml:space="preserve">
-    <value>This user is not a registered livestreamer.</value>
-  </data>
-  <data name="UnregisteredUser" xml:space="preserve">
-    <value>This username is not linked to a registered user.</value>
-  </data>
-  <data name="NonAdminError" xml:space="preserve">
-    <value>The issuer is not an admin</value>
+  <data name="UserName" xml:space="preserve">
+    <value>Den_drummer</value>
   </data>
 </root>

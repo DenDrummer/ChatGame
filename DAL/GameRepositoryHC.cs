@@ -50,7 +50,8 @@ namespace ChatGame.DAL
             User u_den_drummer = new User()
             {
                 Id = (ushort)(users.Count + 1),
-                UserName = "den_drummer"
+                UserName = "den_drummer",
+                IsAdmin = true
             };
             users.Add(u_den_drummer);
             #endregion
@@ -59,7 +60,8 @@ namespace ChatGame.DAL
             User u_doomce = new User()
             {
                 Id = (ushort)(users.Count + 1),
-                UserName = "doomce"
+                UserName = "doomce",
+                IsAdmin = false
             };
             users.Add(u_doomce);
             #endregion
@@ -68,7 +70,8 @@ namespace ChatGame.DAL
             User u_jakeo232 = new User()
             {
                 Id = (ushort)(users.Count + 1),
-                UserName = "jakeo232"
+                UserName = "jakeo232",
+                IsAdmin = false
             };
             users.Add(u_jakeo232);
             #endregion
@@ -186,7 +189,7 @@ namespace ChatGame.DAL
 
         public IEnumerable<User> ReadUsers() => users;
 
-        public IEnumerable<Viewer> ReadViewers(Streamer streamer) => viewers;
+        public IEnumerable<Viewer> ReadViewers() => viewers;
         #endregion
 
         #region Read single methods
@@ -247,7 +250,7 @@ namespace ChatGame.DAL
         {
             return new Streamer()
             {
-                Id = (ushort)(streamers.Count + 1),
+                Id = (uint)(streamers.Count + 1),
                 User = user,
 
                 #region location

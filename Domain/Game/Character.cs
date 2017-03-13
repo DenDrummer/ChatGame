@@ -2,7 +2,7 @@
 {
     public abstract class Character
     {
-        public ushort Id { get; set; }
+        public uint Id { get; set; }
 
         #region Location
         public int XLocation { get; set; }

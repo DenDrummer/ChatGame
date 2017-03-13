@@ -8,5 +8,6 @@ namespace ChatGame.BL.Domain
         [Required]
         [RegularExpression("^[a-z_0-9]{4,25}$", ErrorMessageResourceName = "InvalidUserName", ErrorMessageResourceType = typeof(Resources.Resources))]
         public string UserName { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
