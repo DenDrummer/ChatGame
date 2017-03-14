@@ -79,6 +79,36 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_imGlitch {
+            get {
+                object obj = ResourceManager.GetObject("img_imGlitch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_Kappa {
+            get {
+                object obj = ResourceManager.GetObject("img_Kappa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_PJSalt {
+            get {
+                object obj = ResourceManager.GetObject("img_PJSalt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to oauth:nm2vkaigqi8vqtuynae055zxw2o0jr.
         /// </summary>
         public static string Token {

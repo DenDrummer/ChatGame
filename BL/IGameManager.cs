@@ -22,36 +22,36 @@ namespace ChatGame.BL
         void ChangeEmoji(Emoji emoji);
         void ChangeEnemy(Enemy enemy);
         void ChangeStreamer(Streamer streamer);
-        void ChangeUserName(ushort id, string newName);
+        void ChangeUserName(uint id, string newName);
         void ChangeViewer(Viewer viewer);
         #endregion
 
         #region Get multiple methods
         IEnumerable<Emoji> GetEmojis();
-        IEnumerable<Enemy> GetEnemiesOfStreamer(int streamerId);
+        IEnumerable<Enemy> GetEnemiesOfStreamer(uint streamerId);
         IEnumerable<Enemy> GetEnemiesWithEmoji(string emojiTekst);
         IEnumerable<Streamer> GetStreamers();
         IEnumerable<User> GetUsers();
-        IEnumerable<Viewer> GetViewersOfStreamer(int streamerId);
+        IEnumerable<Viewer> GetViewersOfStreamer(uint streamerId);
         #endregion
 
         #region Get single methods
         Emoji GetEmoji(string emojiTekst);
-        Enemy GetEnemy(int enemyId);
-        Streamer GetStreamer(int streamerId);
+        Enemy GetEnemy(uint enemyId);
+        Streamer GetStreamer(uint streamerId);
         Streamer GetStreamer(string streamerName);
-        User GetUser(int userId);
+        User GetUser(uint userId);
         User GetUser(string userName);
-        Viewer GetViewer(int viewerId);
+        Viewer GetViewer(uint viewerId);
         Viewer GetViewer(string viewerName, Streamer streamer);
         #endregion
 
         #region Remove methods
-        void RemoveEmoji(int emojiId);
-        void RemoveEnemy(int enemyId);
-        void RemoveStreamer(int streamerId);
-        void RemoveUser(int userId);
-        void RemoveViewer(int viewerId);
+        void RemoveEmoji(uint emojiId);
+        void RemoveEnemy(uint enemyId);
+        void RemoveStreamer(uint streamerId);
+        void RemoveUser(uint userId);
+        void RemoveViewer(uint viewerId);
         #endregion
     }
 }

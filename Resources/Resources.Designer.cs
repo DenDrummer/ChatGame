@@ -61,6 +61,24 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to register the following user as a new livestreamer?.
+        /// </summary>
+        public static string AskRegisterStreamer {
+            get {
+                return ResourceManager.GetString("AskRegisterStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to register the following person as a new user?.
+        /// </summary>
+        public static string AskRegisterUser {
+            get {
+                return ResourceManager.GetString("AskRegisterUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Whose chat do you want to log?.
         /// </summary>
         public static string AskWhoToLog {
@@ -75,6 +93,15 @@ namespace ChatGame.Resources {
         public static string Choice {
             get {
                 return ResourceManager.GetString("Choice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection to Twitch has succeeded..
+        /// </summary>
+        public static string Connected {
+            get {
+                return ResourceManager.GetString("Connected", resourceCulture);
             }
         }
         
@@ -97,11 +124,29 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This person has already been registered as a user!.
+        /// </summary>
+        public static string ExistingUser {
+            get {
+                return ResourceManager.GetString("ExistingUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user has already been registered to be viewing this user!.
         /// </summary>
         public static string ExistingViewer {
             get {
                 return ResourceManager.GetString("ExistingViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to connect to Twitch. Do you have a working internet connection?.
+        /// </summary>
+        public static string FailedTcpClient {
+            get {
+                return ResourceManager.GetString("FailedTcpClient", resourceCulture);
             }
         }
         
@@ -169,36 +214,6 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_imGlitch {
-            get {
-                object obj = ResourceManager.GetObject("img_imGlitch", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_Kappa {
-            get {
-                object obj = ResourceManager.GetObject("img_Kappa", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_PJSalt {
-            get {
-                object obj = ResourceManager.GetObject("img_PJSalt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to This is not a valid command!.
         /// </summary>
         public static string InvalidCommand {
@@ -226,11 +241,29 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to That is not a valid response!.
+        /// </summary>
+        public static string InvalidResponse {
+            get {
+                return ResourceManager.GetString("InvalidResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is not a valid streamer!.
         /// </summary>
         public static string InvalidStreamer {
             get {
                 return ResourceManager.GetString("InvalidStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid user!.
+        /// </summary>
+        public static string InvalidUser {
+            get {
+                return ResourceManager.GetString("InvalidUser", resourceCulture);
             }
         }
         
@@ -258,6 +291,15 @@ namespace ChatGame.Resources {
         public static string MainMenuText {
             get {
                 return ResourceManager.GetString("MainMenuText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -298,6 +340,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timer has been started..
+        /// </summary>
+        public static string TimerStarted {
+            get {
+                return ResourceManager.GetString("TimerStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user is not a registered livestreamer..
         /// </summary>
         public static string UnregisteredStreamer {
@@ -325,7 +376,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.19.
+        ///   Looks up a localized string similar to 0.0.20.
         /// </summary>
         public static string VersionId {
             get {
@@ -339,6 +390,24 @@ namespace ChatGame.Resources {
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (y/n).
+        /// </summary>
+        public static string YesOrNo {
+            get {
+                return ResourceManager.GetString("YesOrNo", resourceCulture);
             }
         }
     }

@@ -15,6 +15,14 @@ namespace ChatGame.DAL
         private List<Viewer> viewers;
         #endregion
 
+        #region IDs
+        private uint emojiId;
+        private uint enemyId;
+        private uint streamerId;
+        private uint userId;
+        private uint viewerId;
+        #endregion
+
         public GameRepositoryHC()
         {
             Seed();
@@ -30,17 +38,20 @@ namespace ChatGame.DAL
             viewers = new List<Viewer>();
             #endregion
 
+            #region Initialize IDs
+            #endregion
+
             #region Create emojis
             #region imGlitch
-            Emoji imGlitch = NewEmoji("imGlitch", Resources.Resources.img_imGlitch);
+            Emoji imGlitch = NewEmoji("imGlitch", Resources.TwitchResources.img_imGlitch);
             emojis.Add(imGlitch);
             #endregion
             #region Kappa
-            Emoji Kappa = NewEmoji("Kappa", Resources.Resources.img_Kappa);
+            Emoji Kappa = NewEmoji("Kappa", Resources.TwitchResources.img_Kappa);
             emojis.Add(Kappa);
             #endregion
             #region PJSalt
-            Emoji PJSalt = NewEmoji("PJSalt", Resources.Resources.img_PJSalt);
+            Emoji PJSalt = NewEmoji("PJSalt", Resources.TwitchResources.img_PJSalt);
             emojis.Add(PJSalt);
             #endregion
             #endregion
@@ -157,13 +168,13 @@ namespace ChatGame.DAL
         #endregion
 
         #region Delete methods
-        public void DeleteEmoji(int id)
+        public void DeleteEmoji(uint id)
         {
             enemies.RemoveAll(e => e.Emoji.Id == id);
             emojis.Remove(ReadEmoji(id));
         }
 
-        public void DeleteEnemy(int id) => enemies.Remove(ReadEnemy(id));
+        public void DeleteEnemy(uint id) => enemies.Remove(ReadEnemy(id));
         #endregion
 
         #region Read multiple methods
@@ -193,20 +204,20 @@ namespace ChatGame.DAL
         #endregion
 
         #region Read single methods
-        public Emoji ReadEmoji(int EmojiId) => emojis.Find(em => em.Id == (ushort)EmojiId);
+        public Emoji ReadEmoji(uint EmojiId) => emojis.Find(em => em.Id == (ushort)EmojiId);
 
-        public Enemy ReadEnemy(int EnemyId) => enemies.Find(en => en.Id == (ushort)EnemyId);
+        public Enemy ReadEnemy(uint EnemyId) => enemies.Find(en => en.Id == (ushort)EnemyId);
 
-        public Streamer ReadStreamer(int streamerId) => streamers.Find(s => s.Id == streamerId);
+        public Streamer ReadStreamer(uint streamerId) => streamers.Find(s => s.Id == streamerId);
 
-        public Streamer ReadStreamerFromViewer(int viewerId)
+        public Streamer ReadStreamerFromViewer(uint viewerId)
         {
             return streamers.Find(s => s.Id == ReadViewer(viewerId).Streamer.Id);
         }
 
-        public User ReadUser(int userId) => users.Find(u => u.Id == userId);
+        public User ReadUser(uint userId) => users.Find(u => u.Id == userId);
 
-        public Viewer ReadViewer(int viewerId) => viewers.Find(v => v.Id == viewerId);
+        public Viewer ReadViewer(uint viewerId) => viewers.Find(v => v.Id == viewerId);
         #endregion
 
         #region Update methods

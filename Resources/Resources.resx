@@ -129,16 +129,6 @@
   <data name="Goodbye" xml:space="preserve">
     <value>Goodbye!</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="img_imGlitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\imGlitch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="img_Kappa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\Kappa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="img_PJSalt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Images\PJSalt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="InvalidCommand" xml:space="preserve">
     <value>This is not a valid command!</value>
   </data>
@@ -170,7 +160,7 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.19</value>
+    <value>0.0.20</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
@@ -210,5 +200,38 @@
   </data>
   <data name="NonAdminError" xml:space="preserve">
     <value>The issuer is not an admin</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Connection to Twitch has succeeded.</value>
+  </data>
+  <data name="FailedTcpClient" xml:space="preserve">
+    <value>Failed to connect to Twitch. Do you have a working internet connection?</value>
+  </data>
+  <data name="TimerStarted" xml:space="preserve">
+    <value>Timer has been started.</value>
+  </data>
+  <data name="AskRegisterStreamer" xml:space="preserve">
+    <value>Do you want to register the following user as a new livestreamer?</value>
+  </data>
+  <data name="AskRegisterUser" xml:space="preserve">
+    <value>Do you want to register the following person as a new user?</value>
+  </data>
+  <data name="ExistingUser" xml:space="preserve">
+    <value>This person has already been registered as a user!</value>
+  </data>
+  <data name="InvalidResponse" xml:space="preserve">
+    <value>That is not a valid response!</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="YesOrNo" xml:space="preserve">
+    <value>(y/n)</value>
+  </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>This is not a valid user!</value>
   </data>
 </root>

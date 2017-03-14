@@ -25,7 +25,7 @@ namespace ChatGame.UI_CA_ChatLog
         static string userName, token, channel, msgPrefix, chatCmdId;
         private static Regex chatPrefix;
 
-        static string accPtrn = Resources.TwitchResources.AccountPattern;
+        static string accPtrn;
 
         static DateTime lastMsg;
 
@@ -46,8 +46,9 @@ namespace ChatGame.UI_CA_ChatLog
 
             Timer();
             Console.ReadLine();
-            Console.WriteLine("Goodbye");
+            Console.WriteLine(Resources.Resources.Goodbye);
             keepLogging = false;
+            Console.ReadLine();
         }
 
         //this is not working yet, but is not a priority
@@ -66,7 +67,7 @@ namespace ChatGame.UI_CA_ChatLog
         {
             return Task.Run(async () =>
             {
-                Console.WriteLine("Timer started");
+                Console.WriteLine(Resources.Resources.TimerStarted);
                 while (keepLogging)
                 {
                     if (!tcpClient.Connected)
@@ -92,6 +93,7 @@ namespace ChatGame.UI_CA_ChatLog
                 if (tcpClient.Available > 0 || reader.Peek() >= 0)
                 {
                     string msg = reader.ReadLine();
+                    Console.WriteLine(msg);
 
                     //if it's an admin saying something
                 }
@@ -133,34 +135,10 @@ namespace ChatGame.UI_CA_ChatLog
             Console.WriteLine(msg);
         }
 
-        private static void Reconnect()
-        {
-            int port;
-            int.TryParse(Resources.TwitchResources.TwitchIrcPort, out port);
-
-            tcpClient = new TcpClient(Resources.TwitchResources.TwitchIrc, port);
-            reader = new StreamReader(tcpClient.GetStream());
-            writer = new StreamWriter(tcpClient.GetStream());
-            writer.AutoFlush = true;
-
-            //log in
-            string nl = Environment.NewLine;
-            writer.WriteLine($"PASS {token}{nl}" +
-                $"NICK {userName}{nl}" +
-                $"USER {userName} 8 * :{userName}");
-
-            //show users and moderators in chatlog
-            writer.WriteLine("CAP REQ :twitch.tv/membership");
-
-            //join chat
-            writer.WriteLine($"JOIN #{channel}");
-            UpdateMsgPrefix();
-            lastMsg = DateTime.Now;
-        }
-
         private static void Initialize()
         {
             chatCmdId = Resources.TwitchResources.ChatCmdId;
+            accPtrn = Resources.TwitchResources.AccountPattern;
 
             chatPrefix = new Regex($"^{accPtrn}!{accPtrn}@{accPtrn}\\.tmi\\.titch\\.tv {chatCmdId} # {accPtrn} $");
 
@@ -172,6 +150,38 @@ namespace ChatGame.UI_CA_ChatLog
             UpdateMsgPrefix();
 
             sendMsgQueue = new Queue<string>();
+        }
+
+        private static void Reconnect()
+        {
+            int port;
+            int.TryParse(Resources.TwitchResources.TwitchIrcPort, out port);
+            try
+            {
+                tcpClient = new TcpClient(Resources.TwitchResources.TwitchIrc, port);
+                reader = new StreamReader(tcpClient.GetStream());
+                writer = new StreamWriter(tcpClient.GetStream());
+                writer.AutoFlush = true;
+
+                //log in
+                string nl = Environment.NewLine;
+                writer.WriteLine($"PASS {token}{nl}" +
+                    $"NICK {userName}{nl}" +
+                    $"USER {userName} 8 * :{userName}");
+
+                //show users and moderators in chatlog
+                writer.WriteLine("CAP REQ :twitch.tv/membership");
+
+                //join chat
+                writer.WriteLine($"JOIN #{channel}");
+                UpdateMsgPrefix();
+                lastMsg = DateTime.Now;
+                Console.WriteLine(Resources.Resources.Connected);
+            }
+            catch (SocketException)
+            {
+                Console.WriteLine(Resources.Resources.FailedTcpClient);
+            }
         }
 
         private static void UpdateMsgPrefix()
@@ -186,32 +196,100 @@ namespace ChatGame.UI_CA_ChatLog
             {
                 Console.WriteLine(Resources.Resources.AskWhoToLog);
                 Console.Write("=> ");
-                string input = Console.ReadLine();
+                string input = Console.ReadLine().Split(' ')[0].ToLower();
                 Console.WriteLine();
 
                 Streamer s = mgr.GetStreamer(input);
-                if (s != null)
-                {
-                    chat = s.User.UserName;
-                }
-                else
+                //if the streamer doesn't exist
+                if (s == null)
                 {
                     User u = mgr.GetUser(input);
+                    //if the user exists
                     if (u != null)
                     {
+                        //tell the user this and ask if they want to add them to the list of streamers
                         Console.WriteLine(Resources.Resources.UnregisteredStreamer);
+                        Console.WriteLine();
+                        s = AskRegisterStreamer(u);
                     }
                     else
                     {
+                        //tell the user this and ask if they want to add them to the list of users
                         Console.WriteLine(Resources.Resources.UnregisteredUser);
+                        Console.WriteLine();
+                        u = AskRegisterUser(input);
+                        //if they answered yes
+                        if (u != null)
+                        {
+                            //ask if they also want to register them as streamer
+                            s = AskRegisterStreamer(u);
+                        }
                     }
                     Console.WriteLine();
+                }
+                //if the streamer does exist already or has been added
+                if (s != null)
+                {
+                    //set the chat to this user;
+                    chat = s.User.UserName;
                 }
             }
             return chat;
         }
 
-        //to be able to run it from another project
+        private static User AskRegisterUser(string userName)
+        {
+            bool validResponse = false;
+            User u = null;
+            while (!validResponse)
+            {
+                Console.WriteLine($"{Resources.Resources.AskRegisterUser} {Resources.Resources.YesOrNo} {userName}");
+                string input = Console.ReadLine().ToLower().Substring(0, 1);
+                Console.WriteLine();
+                if (input.Equals(Resources.Resources.Yes.ToLower().Substring(0, 1)))
+                {
+                    validResponse = true;
+                    u = mgr.AddUser(userName);
+                }
+                else if (input.Equals(Resources.Resources.No.ToLower().Substring(0, 1)))
+                {
+                    validResponse = true;
+                }
+                else
+                {
+                    Console.WriteLine(Resources.Resources.InvalidResponse);
+                }
+            }
+            return u;
+        }
+
+        private static Streamer AskRegisterStreamer(User u)
+        {
+            bool validResponse = false;
+            Streamer s = null;
+            while (!validResponse)
+            {
+                Console.WriteLine($"{Resources.Resources.AskRegisterStreamer} {Resources.Resources.YesOrNo} {userName}");
+                string input = Console.ReadLine().ToLower().Substring(0,1);
+                Console.WriteLine();
+                if (input.Equals(Resources.Resources.Yes.ToLower().Substring(0, 1)))
+                {
+                    validResponse = true;
+                    s = mgr.AddStreamer(u.UserName);
+                }
+                else if (input.Equals(Resources.Resources.No.ToLower().Substring(0, 1)))
+                {
+                    validResponse = true;
+                }
+                else
+                {
+                    Console.WriteLine(Resources.Resources.InvalidResponse);
+                }
+            }
+            return s;
+        }
+
+        //required to be able to run it from another project
         public string ReturnPath() => Environment.CurrentDirectory;
     }
 }

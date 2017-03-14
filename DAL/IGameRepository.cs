@@ -14,8 +14,8 @@ namespace ChatGame.DAL
         #endregion
 
         #region Delete methods
-        void DeleteEmoji(int id);
-        void DeleteEnemy(int id);
+        void DeleteEmoji(uint id);
+        void DeleteEnemy(uint id);
         #endregion
 
         #region Read multiple methods
@@ -28,12 +28,12 @@ namespace ChatGame.DAL
         #endregion
 
         #region Read single methods
-        Emoji ReadEmoji(int emojiId);
-        Enemy ReadEnemy(int enemyId);
-        Streamer ReadStreamer(int streamerId);
-        Streamer ReadStreamerFromViewer(int viewerId);
-        User ReadUser(int userId);
-        Viewer ReadViewer(int viewerId);
+        Emoji ReadEmoji(uint emojiId);
+        Enemy ReadEnemy(uint enemyId);
+        Streamer ReadStreamer(uint streamerId);
+        Streamer ReadStreamerFromViewer(uint viewerId);
+        User ReadUser(uint userId);
+        Viewer ReadViewer(uint viewerId);
         #endregion
 
         #region Update methods

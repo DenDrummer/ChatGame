@@ -5,7 +5,7 @@ namespace ChatGame.BL.Domain
 {
     public class Viewer
     {
-        public ushort Id { get; set; }
+        public uint Id { get; set; }
         //the user this viewer represents
         [Required]
         public User User { get; set; }

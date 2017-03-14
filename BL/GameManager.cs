@@ -36,6 +36,12 @@ namespace ChatGame.BL
             return repo.CreateStreamer(streamer);
         }
 
+        public User AddUser(User user)
+        {
+            ValidateUser(user);
+            return repo.CreateUser(user);
+        }
+
         public Viewer AddViewer(Viewer viewer)
         {
             ValidateViewer(viewer);
@@ -93,6 +99,23 @@ namespace ChatGame.BL
             }
         }
 
+        public User AddUser(string userName)
+        {
+            User user = GetUser(userName);
+            if (user != null)
+            {
+                throw new Exception(Resources.Resources.ExistingUser);
+            }
+            else
+            {
+                return AddUser(new User()
+                {
+                    UserName = userName,
+                    IsAdmin = false
+                });
+            }
+        }
+
         public Viewer AddViewer(string viewerName, string streamerName)
         {
             Streamer streamer = GetStreamer(streamerName);
@@ -113,9 +136,20 @@ namespace ChatGame.BL
             {
                 throw new Exception(Resources.Resources.ExistingViewer);
             }
+            else if (GetStreamer(streamer.Id) == null)
+            {
+                throw new Exception(Resources.Resources.UnregisteredStreamer);
+            }
             else
             {
-
+                User user = GetUser(viewerName);
+                repo.CreateViewer(new Viewer()
+                {
+                    User = user,
+                    ChatLevel = 0,
+                    LastMessage = DateTime.Now,
+                    Streamer = streamer
+                });
                 throw new NotImplementedException();
             }
         }
@@ -138,7 +172,7 @@ namespace ChatGame.BL
             throw new NotImplementedException();
         }
 
-        public void ChangeUserName(ushort id, string newName)
+        public void ChangeUserName(uint id, string newName)
         {
             throw new NotImplementedException();
         }
@@ -150,6 +184,20 @@ namespace ChatGame.BL
         #endregion
 
         #region Get multiple methods
+        public IEnumerable<Enemy> GetEnemiesOfStreamer(uint streamerId)
+        {
+            return repo.ReadEnemies()
+                .ToList()
+                .Where(en => en.Streamer.Id.Equals(streamerId));
+        }
+
+        public IEnumerable<Enemy> GetEnemiesWithEmoji(string emojiTekst)
+        {
+            return repo.ReadEnemies()
+                .ToList()
+                .Where(en => en.Emoji.EmojiText.Equals(emojiTekst));
+        }
+
         public IEnumerable<Emoji> GetEmojis()
         {
             return repo.ReadEmojis();
@@ -174,6 +222,29 @@ namespace ChatGame.BL
         #endregion
 
         #region Get single methods
+        #region Get by id
+        public Enemy GetEnemy(uint enemyId)
+        {
+            return repo.ReadEnemy(enemyId);
+        }
+
+        public Streamer GetStreamer(uint streamerId)
+        {
+            return repo.ReadStreamer(streamerId);
+        }
+
+        public User GetUser(uint userId)
+        {
+            return repo.ReadUser(userId);
+        }
+
+        public Viewer GetViewer(uint viewerId)
+        {
+            return repo.ReadViewer(viewerId);
+        }
+        #endregion
+
+        #region Get by details
         public Emoji GetEmoji(string emojiTekst)
         {
             return GetEmojis()
@@ -207,6 +278,7 @@ namespace ChatGame.BL
                 .Find(v => v.User.UserName.Equals(viewerName));
         }
         #endregion
+        #endregion
 
         #region Remove methods
         #endregion
@@ -239,6 +311,17 @@ namespace ChatGame.BL
                 throw new ValidationException(Resources.Resources.InvalidStreamer);
         }
 
+        private void ValidateUser(User user)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(user, new ValidationContext(user), errors, validateAllProperties: true);
+
+            if (!valid)
+            {
+                throw new ValidationException(Resources.Resources.InvalidUserName);
+            }
+        }
+
         private void ValidateViewer(Viewer viewer)
         {
             List<ValidationResult> errors = new List<ValidationResult>();
@@ -249,62 +332,32 @@ namespace ChatGame.BL
         }
         #endregion
 
-        public IEnumerable<Enemy> GetEnemiesOfStreamer(int streamerId)
+        public IEnumerable<Viewer> GetViewersOfStreamer(uint streamerId)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Enemy> GetEnemiesWithEmoji(string emojiTekst)
+        public void RemoveEmoji(uint emojiId)
         {
             throw new NotImplementedException();
         }
 
-        public Enemy GetEnemy(int enemyId)
+        public void RemoveEnemy(uint enemyId)
         {
             throw new NotImplementedException();
         }
 
-        public Streamer GetStreamer(int streamerId)
+        public void RemoveStreamer(uint streamerId)
         {
             throw new NotImplementedException();
         }
 
-        public User GetUser(int userId)
+        public void RemoveUser(uint userId)
         {
             throw new NotImplementedException();
         }
 
-        public Viewer GetViewer(int viewerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Viewer> GetViewersOfStreamer(int streamerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveEmoji(int emojiId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveEnemy(int enemyId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveStreamer(int streamerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUser(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveViewer(int viewerId)
+        public void RemoveViewer(uint viewerId)
         {
             throw new NotImplementedException();
         }
@@ -327,16 +380,6 @@ namespace ChatGame.BL
                 XLocation = 0,
                 YLocation = 0,
             });
-        }
-
-        public User AddUser(string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User AddUser(User user)
-        {
-            throw new NotImplementedException();
         }
 
         public void SetAdmin(User user, User issuer)
