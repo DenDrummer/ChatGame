@@ -7,7 +7,7 @@ namespace ChatGame.BL.Domain
     {
         public ushort Id { get; set; }
         [Required]
-        [RegularExpression("^[a-zA-Z:;><()0-9_]{2,}$", ErrorMessageResourceName = "InvalidEmoji", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [RegularExpression("^[a-zA-Z:;><()0-9_]{2,}$", ErrorMessage = "InvalidEmoji")]
         public string EmojiText { get; set; }
         //how rare this emoji is considered
         //this dictates how many times it needs to be used before spawning

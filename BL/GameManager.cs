@@ -50,6 +50,7 @@ namespace ChatGame.BL
         #endregion
 
         #region Add from details methods
+        //these methods always call the "add from item" variant after creating the item
         public Emoji AddEmoji(string emojiTekst, int rarity)
         {
             return AddEmoji(new Emoji()
@@ -82,7 +83,7 @@ namespace ChatGame.BL
             Streamer streamer = GetStreamer(streamerName);
             if (streamer != null)
             {
-                throw new Exception(Resources.Resources.ExistingStreamer);
+                throw new Exception("ExistingStreamer");
             }
             else
             {
@@ -104,7 +105,7 @@ namespace ChatGame.BL
             User user = GetUser(userName);
             if (user != null)
             {
-                throw new Exception(Resources.Resources.ExistingUser);
+                throw new Exception("ExistingUser");
             }
             else
             {
@@ -134,23 +135,27 @@ namespace ChatGame.BL
             Viewer viewer = GetViewer(viewerName, streamer);
             if (viewer != null)
             {
-                throw new Exception(Resources.Resources.ExistingViewer);
+                throw new Exception("ExistingViewer");
             }
             else if (GetStreamer(streamer.Id) == null)
             {
-                throw new Exception(Resources.Resources.UnregisteredStreamer);
+                throw new Exception("UnregisteredStreamer");
             }
             else
             {
                 User user = GetUser(viewerName);
-                repo.CreateViewer(new Viewer()
+                if (user != null)
+                {
+                    user = AddUser(viewerName);
+                }
+                return repo.CreateViewer(new Viewer()
                 {
                     User = user,
                     ChatLevel = 0,
                     LastMessage = DateTime.Now,
                     Streamer = streamer
                 });
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
             }
         }
         #endregion
@@ -184,16 +189,21 @@ namespace ChatGame.BL
         #endregion
 
         #region Get multiple methods
+        public IEnumerable<Enemy> GetEnemies()
+        {
+            return repo.ReadEnemies();
+        }
+
         public IEnumerable<Enemy> GetEnemiesOfStreamer(uint streamerId)
         {
-            return repo.ReadEnemies()
+            return GetEnemies()
                 .ToList()
                 .Where(en => en.Streamer.Id.Equals(streamerId));
         }
 
         public IEnumerable<Enemy> GetEnemiesWithEmoji(string emojiTekst)
         {
-            return repo.ReadEnemies()
+            return GetEnemies()
                 .ToList()
                 .Where(en => en.Emoji.EmojiText.Equals(emojiTekst));
         }
@@ -213,11 +223,21 @@ namespace ChatGame.BL
             return repo.ReadUsers();
         }
 
-        public IEnumerable<Viewer> GetViewers(Streamer streamer)
+        public IEnumerable<Viewer> GetViewers()
         {
-            return repo.ReadViewers()
+            return repo.ReadViewers();
+        }
+
+        public IEnumerable<Viewer> GetViewersOfStreamer(Streamer streamer)
+        {
+            return GetViewers()
                 .ToList()
                 .Where(v => v.Streamer.Equals(streamer));
+        }
+
+        public IEnumerable<Viewer> GetViewersOfStreamer(uint streamerId)
+        {
+            return GetViewersOfStreamer(GetStreamer(streamerId));
         }
         #endregion
 
@@ -247,6 +267,7 @@ namespace ChatGame.BL
         #region Get by details
         public Emoji GetEmoji(string emojiTekst)
         {
+            //throw new Exception("UnkownEmoji");
             return GetEmojis()
                 .ToList()
                 .Find(em => em.EmojiText.Equals(emojiTekst));
@@ -254,9 +275,17 @@ namespace ChatGame.BL
 
         public Streamer GetStreamer(string streamerName)
         {
-            return GetStreamers()
+            Streamer streamer = GetStreamers()
                 .ToList()
                 .Find(s => s.User.UserName.Equals(streamerName));
+            if (streamer != null)
+            {
+                return streamer;
+            }
+            else
+            {
+                throw new Exception("UnregisteredStreamer");
+            }
         }
 
         public User GetUser(string userName)
@@ -273,14 +302,31 @@ namespace ChatGame.BL
 
         public Viewer GetViewer(string viewerName, Streamer streamer)
         {
-            return GetViewers(streamer)
+            Viewer viewer = GetViewersOfStreamer(streamer)
                 .ToList()
                 .Find(v => v.User.UserName.Equals(viewerName));
+            if (viewer != null)
+            {
+                return viewer;
+            }
+            else
+            {
+                throw new Exception("UnregisteredViewerOfStreamer");
+            }
         }
         #endregion
         #endregion
 
         #region Remove methods
+        public void RemoveEmoji(uint emojiId)
+        {
+            repo.DeleteEmoji(emojiId);
+        }
+
+        public void RemoveEnemy(uint enemyId)
+        {
+            repo.DeleteEnemy(enemyId);
+        }
         #endregion
 
         #region Validate methods
@@ -290,7 +336,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidEmoji);
+                throw new ValidationException("InvalidEmoji");
         }
 
         private void ValidateEnemy(Enemy enemy)
@@ -299,7 +345,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidEnemy);
+                throw new ValidationException("InvalidEnemy");
         }
 
         private void ValidateStreamer(Streamer streamer)
@@ -308,7 +354,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidStreamer);
+                throw new ValidationException("InvalidStreamer");
         }
 
         private void ValidateUser(User user)
@@ -318,7 +364,7 @@ namespace ChatGame.BL
 
             if (!valid)
             {
-                throw new ValidationException(Resources.Resources.InvalidUserName);
+                throw new ValidationException("InvalidUserName");
             }
         }
 
@@ -328,24 +374,9 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(viewer, new ValidationContext(viewer), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException(Resources.Resources.InvalidViewer);
+                throw new ValidationException("InvalidViewer");
         }
         #endregion
-
-        public IEnumerable<Viewer> GetViewersOfStreamer(uint streamerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveEmoji(uint emojiId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveEnemy(uint enemyId)
-        {
-            throw new NotImplementedException();
-        }
 
         public void RemoveStreamer(uint streamerId)
         {

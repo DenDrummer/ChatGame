@@ -160,7 +160,7 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.20</value>
+    <value>0.0.21</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
@@ -233,5 +233,14 @@
   </data>
   <data name="InvalidUser" xml:space="preserve">
     <value>This is not a valid user!</value>
+  </data>
+  <data name="UnkownEmoji" xml:space="preserve">
+    <value>This is not a known emoji!</value>
+  </data>
+  <data name="UnregisteredViewer" xml:space="preserve">
+    <value>This user is not registered as a viewer of any streamer.</value>
+  </data>
+  <data name="UnregisteredViewerOfStreamer" xml:space="preserve">
+    <value>This user is not registered as a viewer of this streamer.</value>
   </data>
 </root>

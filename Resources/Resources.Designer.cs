@@ -349,6 +349,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a known emoji!.
+        /// </summary>
+        public static string UnkownEmoji {
+            get {
+                return ResourceManager.GetString("UnkownEmoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This user is not a registered livestreamer..
         /// </summary>
         public static string UnregisteredStreamer {
@@ -367,6 +376,24 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user is not registered as a viewer of any streamer..
+        /// </summary>
+        public static string UnregisteredViewer {
+            get {
+                return ResourceManager.GetString("UnregisteredViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user is not registered as a viewer of this streamer..
+        /// </summary>
+        public static string UnregisteredViewerOfStreamer {
+            get {
+                return ResourceManager.GetString("UnregisteredViewerOfStreamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to version.
         /// </summary>
         public static string Version {
@@ -376,7 +403,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.20.
+        ///   Looks up a localized string similar to 0.0.21.
         /// </summary>
         public static string VersionId {
             get {

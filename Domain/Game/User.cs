@@ -6,7 +6,7 @@ namespace ChatGame.BL.Domain
     {
         public uint Id { get; set; }
         [Required]
-        [RegularExpression("^[a-z_0-9]{4,25}$", ErrorMessageResourceName = "InvalidUserName", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [RegularExpression("^[a-z_0-9]{4,25}$", ErrorMessage = "InvalidUserName")]
         public string UserName { get; set; }
         public bool IsAdmin { get; set; }
     }

@@ -95,7 +95,7 @@ namespace ChatGame.UI_CA_ChatLog
                     string msg = reader.ReadLine();
                     Console.WriteLine(msg);
 
-                    //if it's an admin saying something
+                    //if it's a ChatGame admin saying something (aka admin commands (see that supertruck game))
                 }
             });
         }

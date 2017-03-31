@@ -72,7 +72,7 @@ namespace ChatGame.UI_CA
             }
             else
             {
-                Console.Write($"{parms[1]} ");
+                Console.Write($"{parms[1]} : ");
                 switch (parms[1])
                 {
                     case "commands":
