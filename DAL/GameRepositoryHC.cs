@@ -16,7 +16,7 @@ namespace ChatGame.DAL
         #endregion
 
         #region IDs
-        private uint emojiId;
+        private ushort emojiId;
         private uint enemyId;
         private uint streamerId;
         private uint userId;
@@ -39,6 +39,11 @@ namespace ChatGame.DAL
             #endregion
 
             #region Initialize IDs
+            emojiId = 1;
+            enemyId = 1;
+            streamerId = 1;
+            userId = 1;
+            viewerId = 1;
             #endregion
 
             #region Create emojis
@@ -128,7 +133,7 @@ namespace ChatGame.DAL
         #region Create Methods
         public Emoji CreateEmoji(Emoji emoji)
         {
-            emoji.Id = (ushort)(emojis.Count + 1);
+            emoji.Id = emojiId++;
             emojis.Add(emoji);
 
             return emoji;
@@ -136,7 +141,7 @@ namespace ChatGame.DAL
 
         public Enemy CreateEnemy(Enemy enemy)
         {
-            enemy.Id = (ushort)(enemies.Count + 1);
+            enemy.Id = enemyId++;
             enemies.Add(enemy);
 
             return enemy;
@@ -144,7 +149,7 @@ namespace ChatGame.DAL
 
         public Streamer CreateStreamer(Streamer streamer)
         {
-            streamer.Id = (ushort)(streamers.Count + 1);
+            streamer.Id = streamerId++;
             streamers.Add(streamer);
 
             return streamer;
@@ -152,7 +157,7 @@ namespace ChatGame.DAL
 
         public User CreateUser(User user)
         {
-            user.Id = (ushort)(users.Count + 1);
+            user.Id = userId++;
             users.Add(user);
 
             return user;
@@ -160,7 +165,7 @@ namespace ChatGame.DAL
 
         public Viewer CreateViewer(Viewer viewer)
         {
-            viewer.Id = (ushort)(viewers.Count + 1);
+            viewer.Id = viewerId++;
             viewers.Add(viewer);
 
             return viewer;
@@ -175,6 +180,21 @@ namespace ChatGame.DAL
         }
 
         public void DeleteEnemy(uint id) => enemies.Remove(ReadEnemy(id));
+
+        public void DeleteStreamer(uint id)
+        {
+            viewers.RemoveAll(v => v.Streamer.Id == id);
+            streamers.Remove(ReadStreamer(id));
+        }
+
+        public void DeleteUser(uint id)
+        {
+            viewers.RemoveAll(v => v.User.Id == id);
+            viewers.RemoveAll(v => v.Streamer.User.Id == id);
+            streamers.RemoveAll(s => s.User.Id == id);
+            users.Remove(ReadUser(id));
+        }
+        public void DeleteViewer(uint id) => viewers.Remove(ReadViewer(id));
         #endregion
 
         #region Read multiple methods
@@ -248,7 +268,7 @@ namespace ChatGame.DAL
         {
             return new Emoji()
             {
-                Id = (ushort)(emojis.Count + 1),
+                Id = emojiId++,
                 EmojiText = emojiText,
                 Rarity = 1,
                 TotalUses = 0,
@@ -261,7 +281,7 @@ namespace ChatGame.DAL
         {
             return new Streamer()
             {
-                Id = (uint)(streamers.Count + 1),
+                Id = streamerId++,
                 User = user,
 
                 #region location
@@ -290,7 +310,7 @@ namespace ChatGame.DAL
         {
             return new Viewer()
             {
-                Id = (ushort)(viewers.Count + 1),
+                Id = viewerId++,
                 ChatLevel = 0,
                 LastMessage = DateTime.Now.ToUniversalTime(),
                 Streamer = streamer,

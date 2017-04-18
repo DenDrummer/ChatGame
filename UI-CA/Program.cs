@@ -36,6 +36,9 @@ namespace ChatGame.UI_CA
             Console.WriteLine();
             switch (command.Split(' ')[0])
             {
+                //case "add":
+                //    AddItem(command);
+                //    break;
                 case "commands":
                     ListCommands();
                     break;
@@ -55,12 +58,18 @@ namespace ChatGame.UI_CA
             Console.WriteLine();
         }
 
+        private static void AddItem(string command)
+        {
+            NotImplementedYet();
+        }
+
         private static void ListCommands()
         {
-            Console.WriteLine($"commands");
-            Console.WriteLine($"help");
-            Console.WriteLine($"logchat");
-            Console.WriteLine($"quit");
+            //Console.WriteLine("Add <type> <data>");
+            Console.WriteLine("commands");
+            Console.WriteLine("help");
+            Console.WriteLine("logchat");
+            Console.WriteLine("quit");
         }
 
         private static void Help(string command)
@@ -75,6 +84,15 @@ namespace ChatGame.UI_CA
                 Console.Write($"{parms[1]} : ");
                 switch (parms[1])
                 {
+                    /*case "add":
+                        Console.WriteLine(Resources.Resources.HelpAdd);
+                        Console.WriteLine(Resources.Resources.HelpAddTypes);
+                        Console.WriteLine("emoji");
+                        Console.WriteLine("enemy");
+                        Console.WriteLine("streamer");
+                        Console.WriteLine("user");
+                        Console.WriteLine("viewer");
+                        break;*/
                     case "commands":
                         Console.WriteLine(Resources.Resources.HelpCommands);
                         break;

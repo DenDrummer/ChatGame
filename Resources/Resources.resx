@@ -148,7 +148,7 @@
     <value>I'm sorry, but this feature has not been implemented yet. :(</value>
   </data>
   <data name="PressAnyKeyToExit" xml:space="preserve">
-    <value>&lt;press any key to exit the program&gt;</value>
+    <value>&lt;press any key to close this window&gt;</value>
   </data>
   <data name="ExistingStreamer" xml:space="preserve">
     <value>This user has already been registered as a streamer!</value>
@@ -160,7 +160,7 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.0.21</value>
+    <value>0.1.0</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
@@ -242,5 +242,11 @@
   </data>
   <data name="UnregisteredViewerOfStreamer" xml:space="preserve">
     <value>This user is not registered as a viewer of this streamer.</value>
+  </data>
+  <data name="HelpAdd" xml:space="preserve">
+    <value>Adds an item of the specified type to the database.</value>
+  </data>
+  <data name="HelpAddTypes" xml:space="preserve">
+    <value>Valid types:</value>
   </data>
 </root>

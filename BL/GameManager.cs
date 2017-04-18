@@ -327,6 +327,21 @@ namespace ChatGame.BL
         {
             repo.DeleteEnemy(enemyId);
         }
+
+        public void RemoveStreamer(uint streamerId)
+        {
+            repo.DeleteStreamer(streamerId);
+        }
+
+        public void RemoveUser(uint userId)
+        {
+            repo.DeleteUser(userId);
+        }
+
+        public void RemoveViewer(uint viewerId)
+        {
+            repo.DeleteViewer(viewerId);
+        }
         #endregion
 
         #region Validate methods
@@ -378,21 +393,6 @@ namespace ChatGame.BL
         }
         #endregion
 
-        public void RemoveStreamer(uint streamerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUser(uint userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveViewer(uint viewerId)
-        {
-            throw new NotImplementedException();
-        }
-
         #region other
         private Streamer CreateDefaultStreamer(User user)
         {
@@ -421,7 +421,7 @@ namespace ChatGame.BL
             }
             else
             {
-                throw new Exception($"NonAdminError: {Resources.Resources.NonAdminError}");
+                throw new Exception("NonAdminError");
             }
         }
         #endregion

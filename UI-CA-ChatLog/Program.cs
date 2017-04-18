@@ -35,20 +35,29 @@ namespace ChatGame.UI_CA_ChatLog
         {
             //put what was in the main into a separate method
             //because the entry point of a program can't be async
-            MainProgram();
+            try
+            {
+                MainProgram();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{e.Message}: {Resources.Resources.ResourceManager.GetString(e.Message)}");
+            }
+            Console.ReadLine();
+            keepLogging = false;
+            Console.WriteLine($"{Resources.Resources.ThanksForUsing} {Resources.Resources.GameTitle}!");
+            Console.WriteLine(Resources.Resources.Goodbye);
+            Console.WriteLine(Resources.Resources.PressAnyKeyToExit);
+            Console.ReadKey();
         }
 
-        private static void MainProgram()
+        private /*async*/ static void MainProgram() //uncomment async once Logger works
         {
             //await SetLogger();
             Initialize();
             Reconnect();
 
             Timer();
-            Console.ReadLine();
-            Console.WriteLine(Resources.Resources.Goodbye);
-            keepLogging = false;
-            Console.ReadLine();
         }
 
         //this is not working yet, but is not a priority
@@ -270,7 +279,7 @@ namespace ChatGame.UI_CA_ChatLog
             while (!validResponse)
             {
                 Console.WriteLine($"{Resources.Resources.AskRegisterStreamer} {Resources.Resources.YesOrNo} {userName}");
-                string input = Console.ReadLine().ToLower().Substring(0,1);
+                string input = Console.ReadLine().ToLower().Substring(0, 1);
                 Console.WriteLine();
                 if (input.Equals(Resources.Resources.Yes.ToLower().Substring(0, 1)))
                 {

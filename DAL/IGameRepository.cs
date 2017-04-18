@@ -16,6 +16,9 @@ namespace ChatGame.DAL
         #region Delete methods
         void DeleteEmoji(uint id);
         void DeleteEnemy(uint id);
+        void DeleteStreamer(uint id);
+        void DeleteUser(uint id);
+        void DeleteViewer(uint id);
         #endregion
 
         #region Read multiple methods

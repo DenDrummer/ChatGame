@@ -169,6 +169,24 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds an item of the specified type to the database..
+        /// </summary>
+        public static string HelpAdd {
+            get {
+                return ResourceManager.GetString("HelpAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid types:.
+        /// </summary>
+        public static string HelpAddTypes {
+            get {
+                return ResourceManager.GetString("HelpAddTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show a list of all available commands..
         /// </summary>
         public static string HelpCommands {
@@ -322,7 +340,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;press any key to exit the program&gt;.
+        ///   Looks up a localized string similar to &lt;press any key to close this window&gt;.
         /// </summary>
         public static string PressAnyKeyToExit {
             get {
@@ -403,7 +421,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.0.21.
+        ///   Looks up a localized string similar to 0.1.0.
         /// </summary>
         public static string VersionId {
             get {
