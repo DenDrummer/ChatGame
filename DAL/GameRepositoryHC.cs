@@ -63,33 +63,23 @@ namespace ChatGame.DAL
 
             #region Create users
             #region Den_drummer
-            User u_den_drummer = new User()
-            {
-                Id = (ushort)(users.Count + 1),
-                UserName = "den_drummer",
-                IsAdmin = true
-            };
+            User u_den_drummer = NewUser("den_drummer");
             users.Add(u_den_drummer);
             #endregion
 
             #region DoomCE
-            User u_doomce = new User()
-            {
-                Id = (ushort)(users.Count + 1),
-                UserName = "doomce",
-                IsAdmin = false
-            };
+            User u_doomce = NewUser("doomce");
             users.Add(u_doomce);
             #endregion
 
             #region Jakeo232
-            User u_jakeo232 = new User()
-            {
-                Id = (ushort)(users.Count + 1),
-                UserName = "jakeo232",
-                IsAdmin = false
-            };
+            User u_jakeo232 = NewUser("jakeo232");
             users.Add(u_jakeo232);
+            #endregion
+
+            #region LeijonaErvasti
+            User u_leijonaervasti = NewUser("leijonaervasti");
+            users.Add(u_leijonaervasti);
             #endregion
             #endregion
 
@@ -98,9 +88,15 @@ namespace ChatGame.DAL
             Streamer s_den_drummer = NewStreamer(u_den_drummer);
             streamers.Add(s_den_drummer);
             #endregion
+
             #region DoomCE
             Streamer s_doomce = NewStreamer(u_doomce);
             streamers.Add(s_doomce);
+            #endregion
+
+            #region LeijonaErvasti
+            Streamer s_leijonaervasti = NewStreamer(u_leijonaervasti);
+            streamers.Add(s_leijonaervasti);
             #endregion
             #endregion
 
@@ -110,6 +106,7 @@ namespace ChatGame.DAL
             Viewer v_dd_d = NewViewer(s_den_drummer, u_doomce);
             viewers.Add(v_dd_d);
             #endregion
+
             #region Jakeo232
             Viewer v_dd_j = NewViewer(s_den_drummer, u_jakeo232);
             viewers.Add(v_dd_j);
@@ -303,6 +300,16 @@ namespace ChatGame.DAL
                 #region other
                 Money = 0
                 #endregion
+            };
+        }
+
+        private User NewUser(string userName)
+        {
+            return new User()
+            {
+                Id = userId++,
+                UserName = userName,
+                IsAdmin = false
             };
         }
 

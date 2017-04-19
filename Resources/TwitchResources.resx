@@ -145,4 +145,7 @@
   <data name="UserName" xml:space="preserve">
     <value>Den_drummer</value>
   </data>
+  <data name="AdminMsgPattern" xml:space="preserve">
+    <value>^den_drummer!den_drummer@den_drummer\\.tmi\\.twitch\\.tv PRIVMSG #[a-zA-Z0-9_]{4,25} $</value>
+  </data>
 </root>

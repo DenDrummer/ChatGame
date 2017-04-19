@@ -70,6 +70,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ^den_drummer!den_drummer@den_drummer\\.tmi\\.twitch\\.tv PRIVMSG #[a-zA-Z0-9_]{4,25} $.
+        /// </summary>
+        public static string AdminMsgPattern {
+            get {
+                return ResourceManager.GetString("AdminMsgPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PRIVMSG.
         /// </summary>
         public static string ChatCmdId {

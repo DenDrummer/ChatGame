@@ -41,7 +41,7 @@ namespace ChatGame.UI_CA_ChatLog
             }
             catch (Exception e)
             {
-                Console.WriteLine($"{e.Message}: {Resources.Resources.ResourceManager.GetString(e.Message)}");
+                WriteError($"{e.Message}: {Resources.Resources.ResourceManager.GetString(e.Message)}");
             }
             Console.ReadLine();
             keepLogging = false;
@@ -92,6 +92,7 @@ namespace ChatGame.UI_CA_ChatLog
 
                     await Task.Run(() => Thread.Sleep(250));
                 }
+                Console.WriteLine(Resources.Resources.TimerStopped);
             });
         }
 
@@ -105,6 +106,10 @@ namespace ChatGame.UI_CA_ChatLog
                     Console.WriteLine(msg);
 
                     //if it's a ChatGame admin saying something (aka admin commands (see that supertruck game))
+                    if (new Regex(Resources.TwitchResources.AdminMsgPattern).IsMatch(msg.Split(':')[1]))
+                    {
+
+                    }
                 }
             });
         }
@@ -208,34 +213,32 @@ namespace ChatGame.UI_CA_ChatLog
                 string input = Console.ReadLine().Split(' ')[0].ToLower();
                 Console.WriteLine();
 
+                //if the user exists
+                User u = mgr.GetUser(input);
                 Streamer s = mgr.GetStreamer(input);
-                //if the streamer doesn't exist
-                if (s == null)
+                if (u == null)
                 {
-                    User u = mgr.GetUser(input);
-                    //if the user exists
+                    //tell the user this and ask if they want to add them to the list of users
+                    WriteError(Resources.Resources.UnregisteredUser);
+                    Console.WriteLine();
+                    //ask if they want to register this person as a streamer
+                    u = AskRegisterUser(input);
+                    //if they registered the user
                     if (u != null)
                     {
-                        //tell the user this and ask if they want to add them to the list of streamers
-                        Console.WriteLine(Resources.Resources.UnregisteredStreamer);
-                        Console.WriteLine();
+                        //ask if they want to also register them as livestreamer
+                        Console.WriteLine($"{Resources.Resources.AskRegisterStreamerAlso} {Resources.Resources.YesOrNo} {u.UserName}");
                         s = AskRegisterStreamer(u);
                     }
-                    else
-                    {
-                        //tell the user this and ask if they want to add them to the list of users
-                        Console.WriteLine(Resources.Resources.UnregisteredUser);
-                        Console.WriteLine();
-                        u = AskRegisterUser(input);
-                        //if they answered yes
-                        if (u != null)
-                        {
-                            //ask if they also want to register them as streamer
-                            s = AskRegisterStreamer(u);
-                        }
-                    }
-                    Console.WriteLine();
                 }
+                //if they're a user but not registered as a livestreamer yet
+                else if (s == null)
+                {
+                    //ask if they want to register them as livestreamer
+                    Console.WriteLine($"{Resources.Resources.AskRegisterStreamer} {Resources.Resources.YesOrNo} {u.UserName}");
+                    s = AskRegisterStreamer(u);
+                }
+
                 //if the streamer does exist already or has been added
                 if (s != null)
                 {
@@ -244,6 +247,13 @@ namespace ChatGame.UI_CA_ChatLog
                 }
             }
             return chat;
+        }
+
+        private static void WriteError(string error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            Console.ResetColor();
         }
 
         private static User AskRegisterUser(string userName)
@@ -278,7 +288,6 @@ namespace ChatGame.UI_CA_ChatLog
             Streamer s = null;
             while (!validResponse)
             {
-                Console.WriteLine($"{Resources.Resources.AskRegisterStreamer} {Resources.Resources.YesOrNo} {userName}");
                 string input = Console.ReadLine().ToLower().Substring(0, 1);
                 Console.WriteLine();
                 if (input.Equals(Resources.Resources.Yes.ToLower().Substring(0, 1)))

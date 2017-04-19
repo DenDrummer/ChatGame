@@ -160,7 +160,7 @@
     <value>version</value>
   </data>
   <data name="VersionId" xml:space="preserve">
-    <value>0.1.0</value>
+    <value>0.1.1</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to</value>
@@ -248,5 +248,11 @@
   </data>
   <data name="HelpAddTypes" xml:space="preserve">
     <value>Valid types:</value>
+  </data>
+  <data name="TimerStopped" xml:space="preserve">
+    <value>Timer has been stopped.</value>
+  </data>
+  <data name="AskRegisterStreamerAlso" xml:space="preserve">
+    <value>Do you want to register the following user as a new livestreamer?</value>
   </data>
 </root>

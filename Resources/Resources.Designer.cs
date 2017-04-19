@@ -70,6 +70,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to register the following user as a new livestreamer?.
+        /// </summary>
+        public static string AskRegisterStreamerAlso {
+            get {
+                return ResourceManager.GetString("AskRegisterStreamerAlso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to register the following person as a new user?.
         /// </summary>
         public static string AskRegisterUser {
@@ -367,6 +376,15 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timer has been stopped..
+        /// </summary>
+        public static string TimerStopped {
+            get {
+                return ResourceManager.GetString("TimerStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This is not a known emoji!.
         /// </summary>
         public static string UnkownEmoji {
@@ -421,7 +439,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.1.0.
+        ///   Looks up a localized string similar to 0.1.1.
         /// </summary>
         public static string VersionId {
             get {

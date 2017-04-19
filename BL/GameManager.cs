@@ -290,9 +290,17 @@ namespace ChatGame.BL
 
         public User GetUser(string userName)
         {
-            return GetUsers()
+            User user = GetUsers()
                 .ToList()
                 .Find(u => u.UserName.Equals(userName));
+            if (user != null)
+            {
+                return user;
+            }
+            else
+            {
+                throw new Exception("UnregisteredUser");
+            }
         }
 
         public Viewer GetViewer(string viewerName, string streamerName)
