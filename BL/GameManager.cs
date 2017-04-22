@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ChatGame.BL.Domain;
 using ChatGame.DAL;
+using ChatGame.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace ChatGame.BL
@@ -83,7 +84,7 @@ namespace ChatGame.BL
             Streamer streamer = GetStreamer(streamerName);
             if (streamer != null)
             {
-                throw new Exception("ExistingStreamer");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.ExistingStreamer));
             }
             else
             {
@@ -105,7 +106,7 @@ namespace ChatGame.BL
             User user = GetUser(userName);
             if (user != null)
             {
-                throw new Exception("ExistingUser");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.ExistingUser));
             }
             else
             {
@@ -135,11 +136,11 @@ namespace ChatGame.BL
             Viewer viewer = GetViewer(viewerName, streamer);
             if (viewer != null)
             {
-                throw new Exception("ExistingViewer");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.ExistingViewer));
             }
             else if (GetStreamer(streamer.Id) == null)
             {
-                throw new Exception("UnregisteredStreamer");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.UnregisteredStreamer));
             }
             else
             {
@@ -155,7 +156,6 @@ namespace ChatGame.BL
                     LastMessage = DateTime.Now,
                     Streamer = streamer
                 });
-                //throw new NotImplementedException();
             }
         }
         #endregion
@@ -267,7 +267,7 @@ namespace ChatGame.BL
         #region Get by details
         public Emoji GetEmoji(string emojiTekst)
         {
-            //throw new Exception("UnkownEmoji");
+            //throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.UnkownEmoji));
             return GetEmojis()
                 .ToList()
                 .Find(em => em.EmojiText.Equals(emojiTekst));
@@ -284,7 +284,7 @@ namespace ChatGame.BL
             }
             else
             {
-                throw new Exception("UnregisteredStreamer");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.UnregisteredStreamer));
             }
         }
 
@@ -299,7 +299,7 @@ namespace ChatGame.BL
             }
             else
             {
-                throw new Exception("UnregisteredUser");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.UnregisteredUser));
             }
         }
 
@@ -319,7 +319,7 @@ namespace ChatGame.BL
             }
             else
             {
-                throw new Exception("UnregisteredViewerOfStreamer");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.UnregisteredViewerOfStreamer));
             }
         }
         #endregion
@@ -359,7 +359,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(emoji, new ValidationContext(emoji), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException("InvalidEmoji");
+                throw new ValidationException(ExtensionMethods.GetResourceKey(Resources.Resources.InvalidEmoji));
         }
 
         private void ValidateEnemy(Enemy enemy)
@@ -368,7 +368,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(enemy, new ValidationContext(enemy), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException("InvalidEnemy");
+                throw new ValidationException(ExtensionMethods.GetResourceKey(Resources.Resources.InvalidEnemy));
         }
 
         private void ValidateStreamer(Streamer streamer)
@@ -377,7 +377,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(streamer, new ValidationContext(streamer), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException("InvalidStreamer");
+                throw new ValidationException(ExtensionMethods.GetResourceKey(Resources.Resources.InvalidStreamer));
         }
 
         private void ValidateUser(User user)
@@ -387,7 +387,7 @@ namespace ChatGame.BL
 
             if (!valid)
             {
-                throw new ValidationException("InvalidUserName");
+                throw new ValidationException(ExtensionMethods.GetResourceKey(Resources.Resources.InvalidUserName));
             }
         }
 
@@ -397,7 +397,7 @@ namespace ChatGame.BL
             bool valid = Validator.TryValidateObject(viewer, new ValidationContext(viewer), errors, validateAllProperties: true);
 
             if (!valid)
-                throw new ValidationException("InvalidViewer");
+                throw new ValidationException(ExtensionMethods.GetResourceKey(Resources.Resources.InvalidViewer));
         }
         #endregion
 
@@ -429,7 +429,7 @@ namespace ChatGame.BL
             }
             else
             {
-                throw new Exception("NonAdminError");
+                throw new Exception(ExtensionMethods.GetResourceKey(Resources.Resources.NonAdminError));
             }
         }
         #endregion

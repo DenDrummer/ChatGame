@@ -103,15 +103,34 @@ namespace ChatGame.UI_CA_ChatLog
                 if (tcpClient.Available > 0 || reader.Peek() >= 0)
                 {
                     string msg = reader.ReadLine();
-                    Console.WriteLine(msg);
 
                     //if it's a ChatGame admin saying something (aka admin commands (see that supertruck game))
                     if (new Regex(Resources.TwitchResources.AdminMsgPattern).IsMatch(msg.Split(':')[1]))
                     {
+                        //check if it's a command
 
                     }
+                    //string filteredMsg = FilterMsg(msg);
+                    UpdateChatLog(msg);
                 }
             });
+        }
+
+        private static string FilterMsg(string msg)
+        {
+            //if it's a regular chat message filter out redundant information
+            if (chatPrefix.IsMatch(msg.Split(':')[1]))
+            {
+                string chat = new Regex(accPtrn).Match(msg.Split('#')[1]).ToString();
+                string user = new Regex(accPtrn).Match(msg).ToString();
+                string newMsg = msg.Substring(msg.IndexOf(':', 1) + 1).Trim();
+                return $"(#{chat}) {user}: {newMsg}";
+            }
+            //else show the entire unfiltered msg
+            else
+            {
+                return msg;
+            }
         }
 
         private static Task TrySendMsgs()
@@ -145,6 +164,7 @@ namespace ChatGame.UI_CA_ChatLog
                 string newMsg = msg.Substring(msg.IndexOf(':', 1) + 1).Trim();
                 msg = $"(#{chat}) {user}: {newMsg}";
             }
+            msg = FilterMsg(msg);
 
             Console.WriteLine(msg);
         }

@@ -439,7 +439,7 @@ namespace ChatGame.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.1.1.
+        ///   Looks up a localized string similar to 0.1.2.
         /// </summary>
         public static string VersionId {
             get {
