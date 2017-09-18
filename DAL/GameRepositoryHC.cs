@@ -127,7 +127,7 @@ namespace ChatGame.DAL
         }
 
         #region 'IGameRepository' implementation
-        #region Create Methods
+        #region Create methods
         public Emoji CreateEmoji(Emoji emoji)
         {
             emoji.Id = emojiId++;
@@ -221,9 +221,9 @@ namespace ChatGame.DAL
         #endregion
 
         #region Read single methods
-        public Emoji ReadEmoji(uint EmojiId) => emojis.Find(em => em.Id == (ushort)EmojiId);
+        public Emoji ReadEmoji(uint emojiId) => emojis.Find(em => em.Id == (ushort)emojiId);
 
-        public Enemy ReadEnemy(uint EnemyId) => enemies.Find(en => en.Id == (ushort)EnemyId);
+        public Enemy ReadEnemy(uint enemyId) => enemies.Find(en => en.Id == (ushort)enemyId);
 
         public Streamer ReadStreamer(uint streamerId) => streamers.Find(s => s.Id == streamerId);
 
@@ -244,19 +244,9 @@ namespace ChatGame.DAL
 
         public void UpdateStreamer(Streamer streamer) { }
 
-        public void UpdateViewer(Viewer viewer) { }
-        #endregion
+        public void UpdateUser(User user) { }
 
-        #region login
-        public IEnumerable<string> GetLoginData()
-        {
-            List<string> loginData = new List<string>()
-            {
-                "chatgame"//,
-                //insert OAuth2 token here
-            };
-            return loginData;
-        }
+        public void UpdateViewer(Viewer viewer) { }
         #endregion
         #endregion
 

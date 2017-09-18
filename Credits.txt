@@ -1,0 +1,3 @@
+Links to websites and videos that made me able to create this project
+--------------------
+http://stackoverflow.com/questions/16361685/how-to-get-name-by-string-value-from-a-net-resource-resx-file

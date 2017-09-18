@@ -43,11 +43,8 @@ namespace ChatGame.DAL
         void UpdateEmoji(Emoji emoji);
         void UpdateEnemy(Enemy enemy);
         void UpdateStreamer(Streamer streamer);
+        void UpdateUser(User user);
         void UpdateViewer(Viewer viewer);
-        #endregion
-
-        #region login
-        IEnumerable<string> GetLoginData();
         #endregion
     }
 }

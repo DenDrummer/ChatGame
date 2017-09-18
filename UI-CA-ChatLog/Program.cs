@@ -33,10 +33,10 @@ namespace ChatGame.UI_CA_ChatLog
 
         static void Main(string[] args)
         {
-            //put what was in the main into a separate method
-            //because the entry point of a program can't be async
             try
             {
+                //put what was in the main into a separate method
+                //because the entry point of a program can't be async
                 MainProgram();
             }
             catch (Exception e)

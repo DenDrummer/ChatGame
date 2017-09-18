@@ -164,27 +164,34 @@ namespace ChatGame.BL
         #region Change methods
         public void ChangeEmoji(Emoji emoji)
         {
-            throw new NotImplementedException();
+            ValidateEmoji(emoji);
+            repo.UpdateEmoji(emoji);
         }
 
         public void ChangeEnemy(Enemy enemy)
         {
-            throw new NotImplementedException();
+            ValidateEnemy(enemy);
+            repo.UpdateEnemy(enemy);
         }
 
         public void ChangeStreamer(Streamer streamer)
         {
-            throw new NotImplementedException();
+            ValidateStreamer(streamer);
+            repo.UpdateStreamer(streamer);
         }
 
         public void ChangeUserName(uint id, string newName)
         {
-            throw new NotImplementedException();
+            User user = GetUser(id);
+            user.UserName = newName;
+            ValidateUser(user);
+            repo.UpdateUser(user);
         }
 
         public void ChangeViewer(Viewer viewer)
         {
-            throw new NotImplementedException();
+            ValidateViewer(viewer);
+            repo.UpdateViewer(viewer);
         }
         #endregion
 
