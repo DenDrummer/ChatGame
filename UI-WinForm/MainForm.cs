@@ -1,11 +1,8 @@
 ﻿using ChatGame.Resources;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,8 +10,7 @@ namespace UI_WinForm
 {
     public partial class MainForm : Form
     {
-        private int TxttxtQueueLength;
-        private Queue<string> MainTxtQueue;
+        private int MaxLines;
 
         public MainForm()
         {
@@ -25,44 +21,57 @@ namespace UI_WinForm
 
         private void InitializeValues()
         {
-            TxttxtQueueLength = 1000;
-            MainTxtQueue = new Queue<string>(TxttxtQueueLength);
+            MaxLines = 2;
         }
 
-        private void MainProgram()
+        private async void MainProgram()
         {
-            NewMsg($"{Resources.Welcome} {Resources.GameTitle} {Resources.Version} {Resources.VersionId}", MainTxtQueue, MainTxtBx);
+            await AppendLine($"{Resources.Welcome} {Resources.GameTitle} {Resources.Version} {Resources.VersionId}",
+                MainTxtBx);
+            await AppendLine(new string('-',
+                Resources.Welcome.Length
+                + Resources.GameTitle.Length
+                + Resources.Version.Length
+                + Resources.VersionId.Length
+                + 3),
+                MainTxtBx);
+            await AppendLine(Resources.Disclaimer, MainTxtBx);
         }
 
-        private void NewMsg(string newString, Queue<string> txtQueue, RichTextBox txtBx)
+        private Task AppendLine(string newString, TextBox txtBx)
         {
-            #region update queue
-            //check if the queue is at its maximum size
-            if (txtQueue.Count < TxttxtQueueLength)
+            return Task.Run(() =>
             {
-                //if not just add the new string
-                txtQueue.Enqueue(newString);
-            }
-            else
-            {
-                //else RemoveOwnedForm the oldest line
-                txtQueue.Dequeue();
-                //and then add the new string
-                txtQueue.Enqueue(newString);
-            }
-            #endregion
+                while (!txtBx.IsHandleCreated)
+                {
+                    Task.Delay(100);
+                }
 
-            #region update textbox
-            //copy everything into a stringbuilder
-            //and add an enter after each line in the queue for the textbox
-            StringBuilder newTxt = new StringBuilder();
-            for (int i = 0; i < txtQueue.Count; i++)
-            {
-                newTxt.Append($"{txtQueue.ElementAt(i)}\n");
-            }
-            //update the actual textbox
-            txtBx.Text = newTxt.ToString();
-            #endregion
+                if (txtBx.Text.Length < 1)
+                {
+                    txtBx.Invoke(new Action(() => txtBx.Text = newString));
+                }
+                else if (txtBx.Text.Length < MaxLines)
+                {
+                    txtBx.Invoke(new Action(() => txtBx.AppendText($"\r\n{newString}")));
+                }
+                else
+                {
+                    txtBx.Invoke(new Action(() =>
+                    {
+                        //first add the new line at the end
+                        txtBx.AppendText($"\r\n{newString}");
+
+                        //remove the first line
+                        txtBx.Text.Remove(0, txtBx.Text.IndexOf('\n', 0) + 1);
+                    }));
+                }
+            });
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
